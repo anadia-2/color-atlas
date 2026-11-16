@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>색채의 세계 · Color Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FAF8F4;--ink:#1B1A18;--sub:#6B665E;--line:#E6E1D8;--card:#FFFFFF;--accent:#1F4E89;--r:14px}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.serif{font-family:"Noto Serif KR",serif}
+header.top{position:sticky;top:0;z-index:20;background:rgba(250,248,244,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:12px 20px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:"Noto Serif KR",serif;font-weight:700;font-size:20px;letter-spacing:-.02em}
+.logo-dots{display:grid;grid-template-columns:repeat(3,7px);gap:2px}
+.logo-dots i{width:7px;height:7px;border-radius:2px;display:block}
+.logo small{font-family:"Noto Sans KR";font-weight:500;font-size:12px;color:var(--sub);letter-spacing:.06em}
+nav.menu{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+nav.menu a{text-decoration:none;padding:7px 12px;border-radius:999px;font-size:14px;color:var(--sub);font-weight:500}
+nav.menu a:hover{background:#EFEBE3;color:var(--ink)}
+.langbtn{margin-left:8px;border:1px solid var(--ink);background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700}
+.langbtn:hover{background:var(--ink);color:#fff}
+nav.menu a.on{background:var(--ink);color:#fff}
+main{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
+h1,h2,h3{font-family:"Noto Serif KR",serif;letter-spacing:-.02em;line-height:1.3}
+h2{font-size:24px;margin:44px 0 6px}
+.lead{color:var(--sub);margin:0 0 18px}
+/* search */
+.search{position:relative;max-width:640px}
+.search-row{display:flex;gap:8px;align-items:center;background:#fff;border:1.5px solid var(--ink);border-radius:999px;padding:6px 6px 6px 18px}
+.search-row input[type=text]{flex:1;border:0;outline:0;font:inherit;font-size:16px;background:transparent;min-width:0}
+.picker{width:38px;height:38px;border:0;padding:0;border-radius:50%;overflow:hidden;cursor:pointer;background:none}
+.picker::-webkit-color-swatch-wrapper{padding:0}.picker::-webkit-color-swatch{border:1px solid var(--line);border-radius:50%}
+.btn{border:0;background:var(--ink);color:#fff;border-radius:999px;padding:9px 16px;font-weight:500;font-size:14px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--ink)}
+.sugg{position:absolute;left:0;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.08);overflow:hidden;z-index:30;display:none}
+.sugg a{display:flex;align-items:center;gap:12px;padding:9px 14px;text-decoration:none;font-size:14px}
+.sugg a:hover,.sugg a.sel{background:#F3F0EA}
+.sugg .sw{width:22px;height:22px;border-radius:6px;border:1px solid rgba(0,0,0,.08);flex:none}
+.sugg .hx{margin-left:auto;color:var(--sub);font-family:ui-monospace,monospace;font-size:12px}
+/* home */
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center;padding:20px 0 10px}
+.hero h1{font-size:44px;margin:0 0 10px}
+.hero p{color:var(--sub);font-size:17px;margin:0 0 22px}
+.hero-mosaic{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;border-radius:var(--r);overflow:hidden}
+.hero-mosaic a{aspect-ratio:1;display:block;transition:transform .15s}
+.hero-mosaic a:hover{transform:scale(1.12);position:relative;z-index:2;border-radius:4px}
+.hint{font-size:13px;color:var(--sub);margin-top:10px}
+.hint code{background:#EFEBE3;padding:1px 6px;border-radius:5px;font-size:12px}
+.today{display:grid;grid-template-columns:260px 1fr;border-radius:var(--r);overflow:hidden;background:var(--card);border:1px solid var(--line);text-decoration:none}
+.today .sw{min-height:200px;display:flex;align-items:flex-end;padding:16px;font-family:ui-monospace,monospace;font-size:14px}
+.today .tx{padding:22px 26px}
+.today .tx h3{margin:4px 0 8px;font-size:26px}
+.kicker{font-size:12px;letter-spacing:.12em;color:var(--sub);text-transform:uppercase;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;text-decoration:none;display:block;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--ink);transform:translateY(-2px)}
+.card h3{margin:10px 0 4px;font-size:19px}
+.card p{margin:0;color:var(--sub);font-size:14px}
+.strip{display:flex;height:34px;border-radius:8px;overflow:hidden}
+.strip i{flex:1}
+/* grid of swatches */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:12px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none;display:block;transition:transform .12s, box-shadow .12s}
+.chip:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.chip .sw{height:84px}
+.chip .nm{padding:8px 10px 10px;font-size:13px;line-height:1.35}
+.chip .nm b{display:block;font-weight:700;font-size:14px}
+.chip .nm span{color:var(--sub);font-size:12px}
+.chip .nm code{font-size:11px;color:var(--sub)}
+.fam-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 18px}
+.fam-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px 6px 8px;font-size:13px;display:flex;align-items:center;gap:6px}
+.fam-tabs button i{width:14px;height:14px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.1)}
+.fam-tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.spectrum-wrap{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);cursor:crosshair}
+#spec{display:block;width:100%;height:280px}
+#grayspec{display:block;width:100%;height:36px;cursor:crosshair}
+.spec-tip{position:absolute;pointer-events:none;background:rgba(0,0,0,.75);color:#fff;font-family:ui-monospace,monospace;font-size:12px;padding:3px 7px;border-radius:6px;display:none}
+/* color page */
+.cp-hero{border-radius:20px;padding:34px 34px 28px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.cp-hero h1{font-size:46px;margin:0}
+.cp-hero .en{font-size:18px;opacity:.85;margin-top:2px}
+.cp-hero .codes{font-family:ui-monospace,monospace;font-size:15px;opacity:.9}
+.cp-hero .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.tag{font-size:12px;border:1px solid currentColor;border-radius:999px;padding:2px 10px;opacity:.85}
+.cp-nav{position:absolute;top:20px;right:20px;display:flex;gap:6px}
+.cp-nav button{background:rgba(255,255,255,.18);border:1px solid currentColor;color:inherit;border-radius:999px;padding:6px 12px;font-size:13px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.panel h3{margin:0 0 12px;font-size:17px}
+.codes-table{width:100%;border-collapse:collapse;font-size:14px}
+.codes-table td{padding:7px 0;border-bottom:1px solid #F0ECE5}
+.codes-table td:first-child{color:var(--sub);width:70px;font-size:12px;font-weight:700;letter-spacing:.06em}
+.codes-table td:nth-child(2){font-family:ui-monospace,monospace}
+.codes-table td:last-child{text-align:right;width:56px}
+.copy{border:1px solid var(--line);background:#fff;border-radius:7px;font-size:12px;padding:2px 8px;color:var(--sub)}
+.copy:hover{border-color:var(--ink);color:var(--ink)}
+.story{background:var(--card);border:1px solid var(--line);border-left:6px solid;border-radius:var(--r);padding:22px 26px;margin-top:20px}
+.story h3{margin:2px 0 10px;font-size:20px}
+.story p{margin:0 0 8px;font-size:15.5px}
+.story .meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--sub);font-size:13px;margin-bottom:10px}
+.auto-desc{font-size:16px;margin:18px 0 0;padding:16px 20px;background:#F3F0EA;border-radius:12px}
+.near{display:flex;flex-direction:column;gap:8px}
+.near a{display:flex;align-items:center;gap:12px;text-decoration:none;padding:6px;border-radius:10px}
+.near a:hover{background:#F6F3EE}
+.near .sw{width:42px;height:42px;border-radius:9px;flex:none;border:1px solid rgba(0,0,0,.06)}
+.near b{font-size:14px;display:block}
+.near span{font-size:12px;color:var(--sub)}
+.near .de{margin-left:auto;font-size:12px;color:var(--sub);text-align:right;font-family:ui-monospace,monospace}
+.harm{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.harm .h-name{font-size:13px;font-weight:700;margin-bottom:6px}
+.harm .h-name span{font-weight:400;color:var(--sub)}
+.harm .row{display:flex;height:64px;border-radius:10px;overflow:hidden}
+.harm .row a{flex:1;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-size:10px;font-family:ui-monospace,monospace;text-decoration:none}
+.scale{display:flex;border-radius:12px;overflow:hidden;height:70px}
+.scale a{flex:1;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:10px;font-family:ui-monospace,monospace;text-decoration:none}
+.scale a.cur{flex:1.6;font-weight:700;font-size:11px}
+.cb{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cb div{text-align:center;font-size:12px;color:var(--sub)}
+.cb i{display:block;height:64px;border-radius:10px;margin-bottom:6px;border:1px solid rgba(0,0,0,.06)}
+.contrast{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.contrast>div{border-radius:10px;padding:14px;font-size:14px;border:1px solid var(--line)}
+.contrast b{font-size:20px;display:block}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:5px;margin-right:4px}
+.ok{background:#DCEFE0;color:#1E6B34}.no{background:#F6DEDB;color:#9A2A1F}
+/* korean */
+.obang{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,auto);gap:10px;max-width:560px}
+.obang a{aspect-ratio:1;border-radius:14px;padding:14px;text-decoration:none;display:flex;flex-direction:column;justify-content:space-between}
+.obang a b{font-family:"Noto Serif KR";font-size:30px;line-height:1}
+.obang a span{font-size:12px;line-height:1.45}
+.obang-wrap{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center}
+.ogan{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.ogan a{text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.ogan .sw{height:90px;display:flex;align-items:center;justify-content:center;font-family:"Noto Serif KR";font-size:28px}
+.ogan .f{padding:10px 12px;font-size:13px}
+.ogan .f b{display:block;font-size:15px}
+.mix{display:flex;align-items:center;gap:4px;margin-top:4px;color:var(--sub);font-size:12px}
+.mix i{width:12px;height:12px;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.1)}
+.tcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.tcard{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-decoration:none;transition:border-color .15s}
+.tcard:hover{border-color:var(--ink)}
+.tcard .sw{width:64px;height:64px;border-radius:10px;flex:none}
+.tcard b{font-size:15px}
+.tcard .hj{color:var(--sub);font-size:12px;margin-left:4px}
+.tcard p{margin:2px 0 0;font-size:13px;color:var(--sub);line-height:1.5}
+.vs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.vs .card{cursor:default}
+.vs .card:hover{transform:none;border-color:var(--line)}
+.pair{display:flex;gap:6px;margin-bottom:10px}
+.pair a{flex:1;height:60px;border-radius:10px;display:flex;align-items:flex-end;padding:6px 8px;font-size:12px;text-decoration:none;font-weight:500}
+/* timeline */
+.tl{position:relative;padding-left:34px}
+.tl:before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl-item{position:relative;margin-bottom:18px}
+.tl-dot{position:absolute;left:-34px;top:18px;width:24px;height:24px;border-radius:50%;border:3px solid var(--bg);box-shadow:0 0 0 1px var(--line)}
+.tl-card{display:grid;grid-template-columns:150px 1fr;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-decoration:none;transition:border-color .15s}
+.tl-card:hover{border-color:var(--ink)}
+.tl-card .sw{min-height:130px}
+.tl-card .bd{padding:16px 20px}
+.tl-card .era{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--sub)}
+.tl-card h3{margin:2px 0 6px;font-size:19px}
+.tl-card h3 span{font-family:"Noto Sans KR";font-weight:400;font-size:13px;color:var(--sub);margin-left:6px}
+.tl-card p{margin:0;font-size:14px;color:#3E3A34}
+footer{border-top:1px solid var(--line);color:var(--sub);font-size:12.5px;padding:24px 20px 40px;max-width:1120px;margin:0 auto}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:9px 18px;border-radius:999px;font-size:14px;opacity:0;transition:.2s;pointer-events:none;z-index:50}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr}.hero h1{font-size:34px}
+  .cards,.vs{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .today{grid-template-columns:1fr}.today .sw{min-height:120px}
+  .ogan{grid-template-columns:repeat(2,1fr)}
+  .obang-wrap{grid-template-columns:1fr}
+  .tl-card{grid-template-columns:1fr}.tl-card .sw{min-height:70px}
+  .cp-hero h1{font-size:34px}.cp-hero{padding:24px}
+  .cb{grid-template-columns:repeat(2,1fr)}
+  nav.menu{margin-left:0}
+}
+.subtabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:8px 0 22px;overflow-x:auto}
+.subtabs a{padding:10px 16px;text-decoration:none;color:var(--sub);font-weight:500;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.subtabs a.on{color:var(--ink);border-color:var(--ink)}
+.muted{color:var(--sub)}
+.btn.sm{padding:5px 11px;font-size:12.5px;margin:0 4px 6px 0}
+.btn:disabled{opacity:.4;cursor:default}
+.outfit{display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start}
+.fig-col{position:sticky;top:76px}
+.fig-wrap{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.fig{width:100%;height:auto;display:block;max-height:400px}
+.fig path{cursor:pointer}
+.slotbtns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.slotbtns button{display:grid;grid-template-columns:18px 1fr;column-gap:8px;text-align:left;align-items:center;background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px 9px;font-size:13px;font-weight:500}
+.slotbtns button i{width:18px;height:18px;border-radius:5px;border:1px solid rgba(0,0,0,.12);grid-row:span 2}
+.slotbtns button small{color:var(--sub);font-weight:400;font-size:11.5px}
+.slotbtns button.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.slotbtns button.off{opacity:.45}
+.toggle{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:14px}
+.gsws{display:flex;flex-wrap:wrap;gap:6px}
+.gsw{display:flex;flex-direction:column;align-items:center;gap:4px;border:0;background:none;padding:2px;width:64px;font-size:11px;color:var(--ink);line-height:1.25}
+.gsw i{width:40px;height:40px;border-radius:50%;border:1px solid rgba(0,0,0,.12);display:block;transition:transform .12s}
+.gsw:hover i{transform:scale(1.1)}
+.gsw.on i{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ink)}
+.panel h3 .picker.sm{width:28px;height:28px;vertical-align:middle;margin-left:6px}
+.rec{padding:12px 0;border-top:1px solid #F0ECE5}
+.rec-h{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:8px}
+.rec-h span{font-size:12.5px;color:var(--sub)}
+.notes{margin:0;padding:0;list-style:none}
+.notes li{padding:8px 0 8px 26px;position:relative;font-size:14.5px;border-top:1px solid #F0ECE5}
+.notes li:first-child{border-top:0}
+.notes li:before{position:absolute;left:4px;top:8px;font-weight:700}
+.notes li.n-ok:before{content:"✓";color:#1E6B34}
+.notes li.n-mid:before{content:"!";color:#9A6A00}
+.notes li.n-warn:before{content:"!";color:#9A2A1F}
+.qz{padding:10px 0;border-top:1px solid #F0ECE5}
+.qz b{display:block;font-size:14px;font-weight:500;margin-bottom:6px}
+.qz button,.seg button,.simbar button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;font-size:13px;margin:0 4px 4px 0}
+.qz button.on,.simbar button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.seasontabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 16px}
+.seasontabs button{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;font-weight:700;font-size:14px;display:flex;flex-direction:column;gap:8px}
+.seasontabs button .strip{height:20px;border-radius:6px;width:100%}
+.seasontabs button.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.drapes{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px}
+.drape{border-radius:14px;padding:16px 12px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;border:1px solid rgba(0,0,0,.08)}
+.drape .face{width:84px;height:84px;border-radius:50%;overflow:hidden;background:#f3efe9}
+.drape .face img,.drape .face svg{width:100%;height:100%;object-fit:cover;display:block}
+.drape span{font-size:12px;font-weight:500;text-align:center}
+.chart-layout{display:grid;grid-template-columns:280px 1fr;gap:20px;align-items:start}
+.ctl .kicker{margin:16px 0 6px}
+.ctl .kicker:first-child{margin-top:0}
+.seg{display:flex;flex-direction:column;gap:6px}
+.seg button{border-radius:10px;text-align:left;padding:8px 12px;margin:0}
+.seg button small{display:block;color:var(--sub);font-size:11.5px}
+.seg button.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.seg.two-s{flex-direction:row}
+.seg.two-s button{flex:1;text-align:center}
+.ctl select{width:100%;padding:8px;border-radius:10px;border:1px solid var(--line);font:inherit;font-size:14px;background:#fff}
+.ctl input[type=range]{width:100%}
+.crow{display:flex;gap:8px;align-items:center}
+.tin{flex:1;min-width:0;border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-family:ui-monospace,monospace;font-size:14px}
+.palrow{display:flex;border-radius:12px;overflow:hidden}
+.pal{flex:1;border:0;height:84px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;padding:8px;font-family:ui-monospace,monospace;font-size:11px;min-width:0;overflow:hidden}
+.pal span{font-size:13px;font-weight:700;font-family:"Noto Sans KR",sans-serif}
+.pal{font-family:ui-monospace,monospace}
+.copyrow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:12px;font-size:13px}
+.copyrow .copy{padding:4px 10px}
+.simbar{display:flex;gap:2px;flex-wrap:wrap;align-items:center;margin:16px 0 10px;font-size:13px}
+.cprev{display:grid;grid-template-columns:1.4fr 1.4fr 1fr;gap:12px}
+.cbox{margin:0;border:1px solid var(--line);border-radius:12px;padding:12px}
+.cbox svg{width:100%;height:auto;display:block}
+.cbox figcaption{font-size:12px;color:var(--sub);text-align:center;margin-top:4px}
+.chk{width:100%;border-collapse:collapse;font-size:14px}
+.chk td{padding:8px 4px;border-bottom:1px solid #F0ECE5}
+.chk td:nth-child(3){font-family:ui-monospace,monospace;font-size:13px}
+.chk td:last-child{text-align:right}
+.pp{display:inline-flex;vertical-align:middle;margin-right:4px}
+.pp i{width:16px;height:16px;border-radius:4px;display:block;border:1px solid rgba(0,0,0,.1)}
+.g-ok{background:#DCEFE0;color:#1E6B34}.g-mid{background:#F6ECD2;color:#8A5A00}.g-warn{background:#F6DEDB;color:#9A2A1F}
+.use{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.use p{flex-basis:100%;margin:6px 0 0;font-size:14px}
+@media (max-width:860px){.outfit,.chart-layout{grid-template-columns:1fr}.fig-col{position:static}.cprev{grid-template-columns:1fr}.seasontabs{grid-template-columns:repeat(2,1fr)}.fig{max-height:300px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="logo" href="#home"><span class="logo-dots"><i style="background:#1F5FA8"></i><i style="background:#C8231F"></i><i style="background:#E8B000"></i><i style="background:#F4F1E8;border:1px solid #ddd"></i><i style="background:#1A1A1A"></i><i style="background:#3F8F4E"></i></span><span><span id="logo-name">색채의 세계</span> <small id="logo-sub">COLOR ATLAS</small></span></a>
+  <nav class="menu" id="menu"></nav>
+</div></header>
+<main id="app"></main>
+<footer id="foot"></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= DATA ================= */
+const BASIC = `빨강|Red|E31B23
+진홍|Crimson|DC143C
+스칼렛|Scarlet|FF2400
+체리|Cherry|D2042D
+루비|Ruby|E0115F
+버건디|Burgundy|800020
+와인|Wine|722F37
+마룬|Maroon|800000
+토마토|Tomato|FF6347
+산호색|Coral|FF7F50
+주황|Orange|FF7F00
+귤색|Tangerine|F28500
+호박색|Amber|FFBF00
+테라코타|Terracotta|E2725B
+연어색|Salmon|FA8072
+살구색|Apricot|FBCEB1
+피치|Peach|FFE5B4
+노랑|Yellow|FFE100
+레몬색|Lemon|FFF44F
+카나리아|Canary|FFEF00
+바나나|Banana|FFE135
+머스터드|Mustard|E1AD01
+금색|Gold|D4AF37
+크림색|Cream|FFFDD0
+상아색|Ivory|FFFFF0
+초록|Green|1E9E4A
+연둣빛 라임|Lime|BFFF00
+황록|Yellow Green|9ACD32
+올리브|Olive|808000
+에메랄드|Emerald|50C878
+포레스트 그린|Forest Green|228B22
+민트|Mint|98FF98
+세이지|Sage|9CAF88
+비리디언|Viridian|40826D
+말라카이트|Malachite|0BDA51
+비취색|Jade|00A86B
+청록|Teal|008080
+터키석색|Turquoise|40E0D0
+아쿠아|Aqua|00FFFF
+시안|Cyan|00B7EB
+파랑|Blue|1F4FD8
+하늘색|Sky Blue|87CEEB
+베이비 블루|Baby Blue|89CFF0
+세룰리안|Cerulean|007BA7
+코발트 블루|Cobalt Blue|0047AB
+사파이어|Sapphire|0F52BA
+로열 블루|Royal Blue|4169E1
+스틸 블루|Steel Blue|4682B4
+데님|Denim|1560BD
+네이비|Navy|000080
+보라|Purple|7B2CBF
+바이올렛|Violet|8F00FF
+자수정색|Amethyst|9966CC
+라벤더|Lavender|B57EDC
+라일락|Lilac|C8A2C8
+플럼|Plum|8E4585
+가지색|Eggplant|614051
+분홍|Pink|FFC0CB
+벚꽃색|Cherry Blossom|FFB7C5
+핫핑크|Hot Pink|FF69B4
+로즈|Rose|FF007F
+마젠타|Magenta|FF00FF
+모브|Mauve|E0B0FF
+갈색|Brown|964B00
+초콜릿|Chocolate|7B3F00
+커피|Coffee|6F4E37
+캐러멜|Caramel|AF6E4D
+시에나|Sienna|A0522D
+엄버|Umber|635147
+세피아|Sepia|704214
+녹슨색|Rust|B7410E
+탠|Tan|D2B48C
+카키|Khaki|C3B091
+베이지|Beige|F5F5DC
+흰색|White|FFFFFF
+진주색|Pearl|EAE0C8
+은색|Silver|C0C0C0
+회색|Gray|808080
+슬레이트 그레이|Slate Gray|708090
+차콜|Charcoal|36454F
+검정|Black|000000`.split('\n').map(l=>{const[n,e,h]=l.split('|');return{n,e,h:'#'+h,t:'basic'}});
+
+const KOREAN = [
+ // 오방색
+ {id:'k-cheong',n:'청',hj:'靑',e:'Cheong (Blue)',h:'#1F5FA8',g:'obang',dir:'동',el:'목(木)',season:'봄',d:'동쪽·나무·봄의 색. 만물이 생동하는 생명과 희망을 뜻합니다.',
+  story:['오방색의 청(靑)은 해가 뜨는 동쪽, 오행의 나무(木), 계절로는 봄에 해당합니다. 새싹이 돋는 기운을 상징해 생명·창조·희망의 색으로 여겨졌습니다.','한국어의 ‘푸르다’는 파랑과 초록을 함께 가리키는 말이었습니다. 지금도 초록 신호등을 ‘파란불’이라 부르는 데 그 흔적이 남아 있습니다.']},
+ {id:'k-jeok',n:'적',hj:'赤',e:'Jeok (Red)',h:'#C8231F',g:'obang',dir:'남',el:'화(火)',season:'여름',d:'남쪽·불·여름의 색. 나쁜 기운을 쫓는 벽사(辟邪)의 힘이 있다고 믿었습니다.',
+  story:['적(赤)은 남쪽, 오행의 불(火), 여름에 해당하며 강한 양(陽)의 기운을 지닌 색입니다.','붉은색이 잡귀를 쫓는다고 믿었기에 동지에 팥죽을 쑤어 먹고, 혼례 때 신부의 볼에 연지를 찍고, 부적을 붉은 주사(朱砂)로 그렸습니다.']},
+ {id:'k-hwang',n:'황',hj:'黃',e:'Hwang (Yellow)',h:'#E8B000',g:'obang',dir:'중앙',el:'토(土)',season:'환절기',d:'중앙·흙의 색. 우주의 중심이자 가장 존귀한 색으로 여겨졌습니다.',
+  story:['황(黃)은 동서남북의 한가운데, 오행의 흙(土)을 뜻합니다. 중심의 색이기에 천자(황제)를 상징했습니다.','1897년 대한제국을 선포한 고종은 황제로서 황색 곤룡포(황룡포)를 입었습니다. 그 이전 조선의 국왕은 붉은 곤룡포를 입었습니다.']},
+ {id:'k-baek',n:'백',hj:'白',e:'Baek (White)',h:'#F4F1E8',g:'obang',dir:'서',el:'금(金)',season:'가을',d:'서쪽·쇠·가을의 색. 결백과 순수, 진실을 상징합니다.',
+  story:['백(白)은 서쪽, 오행의 쇠(金), 가을에 해당합니다. 결백·순수·삶의 진실을 뜻했습니다.','한국인을 ‘백의민족’이라 부를 만큼 흰옷을 즐겨 입었는데, 그 흰빛은 표백한 순백보다는 염색하지 않은 무명·삼베의 소색(素色)에 가까웠습니다.']},
+ {id:'k-heuk',n:'흑',hj:'黑',e:'Heuk (Black)',h:'#1A1A1A',g:'obang',dir:'북',el:'수(水)',season:'겨울',d:'북쪽·물·겨울의 색. 인간의 지혜를 관장한다고 보았습니다.',
+  story:['흑(黑)은 북쪽, 오행의 물(水), 겨울에 해당하며 지혜를 상징합니다.','선비의 먹(墨)과 갓, 흑단령처럼 품위와 절제를 나타내는 색으로도 쓰였습니다.']},
+ // 오간색
+ {id:'k-nok',n:'녹',hj:'綠',e:'Nok (Green)',h:'#3F8F4E',g:'ogan',mix:['k-cheong','k-hwang'],d:'청과 황 사이의 간색. 동쪽과 중앙 사이에 놓입니다.'},
+ {id:'k-byeok',n:'벽',hj:'碧',e:'Byeok (Azure)',h:'#5FA8C9',g:'ogan',mix:['k-cheong','k-baek'],d:'청과 백 사이의 간색. 맑게 갠 하늘이나 깊은 물빛의 푸름입니다.'},
+ {id:'k-hong',n:'홍',hj:'紅',e:'Hong (Pinkish Red)',h:'#E0405A',g:'ogan',mix:['k-jeok','k-baek'],d:'적과 백 사이의 간색. 밝고 고운 붉은빛입니다.'},
+ {id:'k-yuhwang',n:'유황',hj:'騮黃',e:'Yuhwang (Ochre)',h:'#A47B2D',g:'ogan',mix:['k-hwang','k-heuk'],d:'황과 흑 사이의 간색. 누런 흙빛에 가까운 어두운 황색입니다.'},
+ {id:'k-ja',n:'자',hj:'紫',e:'Ja (Purple)',h:'#6B2A5E',g:'ogan',mix:['k-jeok','k-heuk'],d:'적과 흑 사이의 간색. 깊은 자줏빛입니다.'},
+ // 전통색
+ {id:'k-jjok',n:'쪽빛',hj:'',e:'Jjok Indigo',h:'#1D4E89',g:'trad',d:'쪽 잎을 발효시켜 물들인 짙은 푸른색. ‘청출어람’의 그 색.',
+  story:['쪽(藍)은 마디풀과의 한해살이풀로, 잎을 삭혀 우려낸 물에 천을 담그고 공기에 말리기를 되풀이하면 짙은 푸른빛이 납니다.','『순자』 권학편의 “청취지어람 이청어람(靑取之於藍 而靑於藍)” — 푸른색은 쪽에서 나왔지만 쪽보다 더 푸르다 — 에서 ‘청출어람’이라는 말이 나왔습니다. 제자가 스승보다 나음을 뜻합니다.']},
+ {id:'k-nam',n:'남색',hj:'藍色',e:'Nam (Deep Blue)',h:'#2C3E8C',g:'trad',d:'쪽(藍)에서 이름이 온 짙은 푸른색. 영어의 navy와는 유래가 다릅니다.'},
+ {id:'k-gam',n:'감색',hj:'紺色',e:'Gam (Dark Navy)',h:'#23284F',g:'trad',d:'검은빛을 띤 짙은 남색. 교복과 정장 색 이름으로 흔히 쓰입니다.'},
+ {id:'k-ok',n:'옥색',hj:'玉色',e:'Ok (Jade Pale)',h:'#9BD4C4',g:'trad',d:'옥처럼 맑고 엷은 청록색. 한복 저고리에 즐겨 쓰였습니다.'},
+ {id:'k-bisaek',n:'비색',hj:'翡色',e:'Bisaek (Celadon)',h:'#87B5A0',g:'trad',d:'고려청자의 은은한 푸른빛. 물총새 깃털빛에 빗댄 이름입니다.',
+  story:['1123년 고려를 다녀간 송나라 사신 서긍은 『선화봉사고려도경』에서 고려 사람들이 청자의 빛깔을 ‘비색(翡色)’이라 부른다고 기록했습니다.','비(翡)는 물총새를 뜻합니다. 유약 속의 미량의 철분이 환원 소성되며 맑고 깊은 청록빛을 냅니다. 중국에서도 ‘천하제일’로 꼽혔습니다.']},
+ {id:'k-chija',n:'치자색',hj:'梔子色',e:'Gardenia Yellow',h:'#F4B63F',g:'trad',d:'치자 열매에서 얻는 따뜻한 노란색. 옷감과 음식(전·떡)에 함께 쓰였습니다.'},
+ {id:'k-songhwa',n:'송화색',hj:'松花色',e:'Pine Pollen Yellow',h:'#F0D96B',g:'trad',d:'봄날 소나무 꽃가루의 연한 노란색. 송화다식의 빛깔입니다.'},
+ {id:'k-kkokdu',n:'꼭두서니색',hj:'',e:'Madder Red',h:'#A9343A',g:'trad',d:'꼭두서니 뿌리로 물들인 붉은색. 서양의 매더 레드(madder)와 같은 계열 염료입니다.'},
+ {id:'k-yeonji',n:'연지색',hj:'臙脂色',e:'Yeonji Crimson',h:'#BE1E3C',g:'trad',d:'잇꽃(홍화)에서 얻은 고운 붉은색. 신부의 연지곤지가 이 색입니다.'},
+ {id:'k-dahong',n:'다홍',hj:'大紅',e:'Dahong Red',h:'#E03A2F',g:'trad',d:'짙고 선명한 홍색. ‘같은 값이면 다홍치마’의 다홍입니다.'},
+ {id:'k-juhong',n:'주홍',hj:'朱紅',e:'Juhong Vermilion',h:'#E8562A',g:'trad',d:'주사(朱砂, 진사)에서 얻은 붉은 주황. 인주와 단청에 쓰였습니다.'},
+ {id:'k-jaju',n:'자주',hj:'紫朱',e:'Jaju Purple',h:'#7A1E52',g:'trad',d:'붉은빛이 강한 보라. 지치(자초) 뿌리로 물들였습니다.'},
+ {id:'k-bunhong',n:'분홍',hj:'粉紅',e:'Bunhong Pink',h:'#F2A7B8',g:'trad',d:'분(가루)처럼 희게 옅어진 홍색이라는 뜻의 이름입니다.'},
+ {id:'k-yeondu',n:'연두',hj:'軟豆',e:'Yeondu Light Green',h:'#A6CF4E',g:'trad',d:'갓 돋은 잎이나 어린 콩의 빛깔 같은 연한 초록.'},
+ {id:'k-sosaek',n:'소색',hj:'素色',e:'Sosaek (Undyed)',h:'#E9DFC7',g:'trad',d:'염색하지 않은 무명·삼베 본래의 빛깔. 백의민족의 ‘흰옷’은 대개 이 색이었습니다.'},
+ {id:'k-misaek',n:'미색',hj:'米色',e:'Misaek (Rice)',h:'#F2E8D0',g:'trad',d:'쌀알처럼 노르스름한 흰색.'},
+ {id:'k-meok',n:'먹색',hj:'墨色',e:'Meok (Ink Black)',h:'#262626',g:'trad',d:'소나무 그을음을 아교로 굳힌 먹의 색. 농담(짙고 옅음)으로 수많은 회색을 만듭니다.'},
+];
+
+const PIGMENTS = [
+ {id:'p-ochre',n:'오커',e:'Ochre',h:'#C77B30',y:-100000,era:'선사시대 · 약 10만 년 전',o:'세계 각지의 흙',
+  story:['산화철을 머금은 흙을 갈아 만든 노랑·주황·빨강 안료로, 인류가 가장 먼저 쓴 색 가운데 하나입니다.','남아프리카 블롬보스 동굴에서는 약 10만 년 전 오커를 갈아 조개껍데기에 섞어 두던 ‘물감 작업장’ 흔적이 발견되었습니다. 라스코·알타미라 동굴벽화의 붉고 누런 동물들도 오커로 그렸습니다.']},
+ {id:'p-indigo',n:'인디고',e:'Indigo',h:'#1F3E6E',y:-4000,era:'약 6천 년 전부터',o:'페루·인도·동아시아(쪽)',
+  story:['인디고는 쪽, 대청(woad), 인도쪽 같은 식물의 잎을 발효시켜 얻는 청색 염료입니다. 페루에서는 약 6천 년 전 인디고로 물들인 면직물이 발견되었습니다.','1897년 독일 BASF가 합성 인디고를 상용화하면서 천연 인디고 산업은 급속히 쇠퇴했습니다. 오늘날 청바지의 파란색이 대부분 합성 인디고입니다. 한국의 ‘쪽빛’과 같은 염료 계열입니다.']},
+ {id:'p-egyptian',n:'이집트 블루',e:'Egyptian Blue',h:'#1034A6',y:-3000,era:'기원전 3천 년대',o:'고대 이집트',
+  story:['모래(석영)·구리·석회를 높은 온도로 함께 구워 만든, 인류 최초의 합성 안료로 꼽힙니다.','로마 시대 이후 제법이 잊혔다가 근대에 다시 분석되었습니다. 이 안료는 근적외선을 받으면 빛을 내기 때문에, 오늘날 학자들은 적외선 카메라로 고대 조각과 벽화에 남은 미세한 흔적을 찾아냅니다.']},
+ {id:'p-tyrian',n:'티리언 퍼플',e:'Tyrian Purple',h:'#66023C',y:-1500,era:'기원전 15세기경',o:'페니키아 티레',
+  story:['지중해 뿔고둥의 분비샘에서 얻는 자주색 염료입니다. 1그램을 얻는 데 수천에서 1만 마리의 고둥이 필요했다고 전해집니다.','너무 비싸 로마 제국에서는 황제와 고위층만 쓸 수 있었습니다. 영어 표현 ‘born in the purple(왕가에서 태어난)’이 여기서 나왔습니다.']},
+ {id:'p-vermilion',n:'버밀리언 (진사·주사)',e:'Vermilion',h:'#E34234',y:-500,era:'고대 중국·로마',o:'진사(황화수은) 광물',
+  story:['황화수은 광물인 진사(辰砂, cinnabar)를 갈거나 합성해 만든 선명한 붉은 안료입니다. 동양에서는 ‘주(朱)’라 불리며 인주, 칠기, 단청, 부적에 쓰였습니다.','로마에서도 매우 귀해 폼페이 ‘신비의 별장’ 벽화의 강렬한 붉은 벽에 쓰였습니다. 수은을 포함하고 있어 광산 노동은 목숨을 건 일이었습니다.']},
+ {id:'p-ultramarine',n:'울트라마린',e:'Ultramarine',h:'#1F2F9E',y:600,era:'6세기경 ~ 르네상스',o:'아프가니스탄 바다흐샨의 청금석',
+  story:['아프가니스탄 바다흐샨 지방에서 캔 청금석(라피스 라줄리)을 곱게 갈고 정제해 만든 안료입니다. 이름은 라틴어 ‘ultramarinus(바다 건너 온)’에서 왔습니다.','르네상스 시대에는 금보다 비쌌기 때문에 계약서에 사용량을 따로 적었고, 가장 성스러운 성모 마리아의 옷에 주로 칠했습니다. 1826년 프랑스 정부가 합성법에 상금을 걸었고, 1828년 장바티스트 기메가 합성 울트라마린을 만들어 값이 크게 떨어졌습니다.']},
+ {id:'p-carmine',n:'카민 (코치닐)',e:'Carmine',h:'#960018',y:1520,era:'16세기 유럽 전래',o:'멕시코·페루의 연지벌레',
+  story:['선인장에 붙어 사는 연지벌레(코치닐)를 말려 빻은 붉은 색소입니다. 아즈텍과 잉카에서 오래전부터 써 왔습니다.','스페인이 이를 유럽에 들여오면서 은 다음가는 귀한 수출품이 되었다고 전해집니다. 오늘날에도 식품 착색료(E120)로 딸기우유·사탕·립스틱 등에 쓰입니다.']},
+ {id:'p-mummy',n:'머미 브라운',e:'Mummy Brown',h:'#8F4B28',y:1600,era:'16~20세기',o:'이집트 미라',
+  story:['실제로 이집트 미라를 갈아 송진 등과 섞어 만든 갈색 안료입니다. 투명하고 따뜻한 갈색이라 그림자 표현에 인기가 있었습니다.','라파엘 전파 화가 에드워드 번존스는 이 안료의 원료를 알고 충격을 받아 물감 튜브를 정원에 묻어 주었다는 일화가 전해집니다. 원료가 바닥나 20세기 중반에 생산이 끊겼습니다.']},
+ {id:'p-prussian',n:'프러시안 블루',e:'Prussian Blue',h:'#0B3D5C',y:1706,era:'1706년 무렵 · 베를린',o:'우연한 실험',
+  story:['베를린의 물감 제조업자 디스바흐가 붉은 안료를 만들려다 오염된 재료 때문에 우연히 얻은 짙은 청색입니다. 최초의 근대 합성 안료로 꼽힙니다.','값싸고 안정적이어서 유럽은 물론 일본에도 퍼졌고, 호쿠사이의 「가나가와 앞바다의 높은 파도」의 깊은 파랑에도 쓰였습니다. 지금은 탈륨·방사성 세슘 중독 해독제로도 쓰입니다.']},
+ {id:'p-scheele',n:'셸레 그린',e:"Scheele's Green",h:'#478800',y:1775,era:'1775년 · 스웨덴',o:'아비산구리(비소 화합물)',
+  story:['스웨덴 화학자 칼 빌헬름 셸레가 만든 밝은 초록 안료입니다. 19세기 벽지, 드레스, 조화, 심지어 과자 색에도 널리 쓰였습니다.','그러나 비소 화합물이라 습기 찬 방에서 곰팡이와 만나면 유독 가스가 생길 수 있었습니다. 세인트헬레나섬에서 숨진 나폴레옹의 방 초록 벽지가 사인과 관련 있다는 설도 있습니다.']},
+ {id:'p-chrome',n:'크롬 옐로',e:'Chrome Yellow',h:'#FFA700',y:1810,era:'19세기 초',o:'크롬산납',
+  story:['1797년 크롬 원소가 발견된 뒤 만들어진 선명한 노랑 안료입니다. 값싸고 화사해 19세기 화가들이 즐겨 썼습니다.','반 고흐의 「해바라기」 연작의 노랑이 대표적입니다. 다만 빛을 받으면 서서히 갈색으로 변해, 오늘날 고흐의 해바라기는 처음보다 어두워졌다는 연구가 있습니다.']},
+ {id:'p-cadmium',n:'카드뮴 옐로',e:'Cadmium Yellow',h:'#FFF600',y:1840,era:'1840년대',o:'황화카드뮴',
+  story:['1817년 발견된 카드뮴으로 만든 밝고 불투명한 노랑입니다. 크롬 옐로보다 변색이 적어 인상파 화가들이 야외 빛을 그릴 때 즐겨 썼습니다.','모네는 햇빛의 노랑을 표현하는 데 카드뮴 옐로를 애용했습니다. 독성 때문에 오늘날 일부 용도에서는 사용이 제한됩니다.']},
+ {id:'p-mauve',n:'모브 (모베인)',e:'Mauveine',h:'#8D029B',y:1856,era:'1856년 · 런던',o:'최초의 합성 염료',
+  story:['18살의 화학도 윌리엄 퍼킨이 말라리아 치료제 퀴닌을 합성하려다 실패한 찌꺼기에서 발견한 보라색 염료입니다. 세계 최초의 합성 염료로 꼽힙니다.','1860년대 유럽에 ‘모브 열풍’이 불었고, 이 발견은 합성 염료 산업과 현대 화학 산업의 출발점이 되었습니다.']},
+ {id:'p-titanium',n:'티타늄 화이트',e:'Titanium White',h:'#F7F7F2',y:1921,era:'1920년대',o:'이산화티타늄',
+  story:['독성이 강한 연백(납 흰색)을 대신하기 위해 1920년대 상용화된 흰 안료입니다.','덮는 힘이 강하고 독성이 낮아, 지금은 세계에서 가장 많이 생산되는 흰 안료가 되었습니다. 페인트뿐 아니라 치약, 종이, 자외선 차단제에도 들어갑니다.']},
+ {id:'p-ikb',n:'인터내셔널 클랭 블루',e:'International Klein Blue',h:'#002FA7',y:1960,era:'1960년 · 파리',o:'울트라마린 + 합성수지',
+  story:['프랑스 미술가 이브 클랭이 화학자와 함께 개발한, 울트라마린 가루의 강렬함을 그대로 살리는 바인더 제법입니다. 1960년 특허 출원으로 유명해졌습니다.','클랭은 이 파랑 한 색으로 캔버스 전체를 칠한 단색화를 발표했고, ‘IKB’는 하나의 색 자체가 작품이 될 수 있음을 보여 준 상징이 되었습니다.']},
+ {id:'p-yinmn',n:'YInMn 블루',e:'YInMn Blue',h:'#2E5090',y:2009,era:'2009년 · 미국 오리건',o:'이트륨·인듐·망간 산화물',
+  story:['오리건 주립대 마스 수브라마니안 연구팀이 전자 소재를 연구하다 우연히 발견한 청색 안료입니다. 이름은 원료 원소 Y·In·Mn에서 따왔습니다.','약 200년 만에 발견된 새로운 무기 청색 안료로 화제가 되었고, 크레욜라의 새 크레용 색 ‘블루티풀(Bluetiful)’에 영감을 주었습니다.']},
+ {id:'p-vanta',n:'반타블랙',e:'Vantablack',h:'#050505',y:2014,era:'2014년 · 영국',o:'탄소 나노튜브 코팅',
+  story:['수직으로 세운 탄소 나노튜브 숲이 빛의 약 99.965%를 흡수해 ‘가장 검은 물질’로 불린 코팅입니다. 입체 물체에 칠하면 평면 구멍처럼 보입니다.','조각가 아니시 카푸어가 예술 분야 독점 사용권을 얻자, 미술가 스튜어트 셈플은 ‘카푸어만 빼고 누구나 살 수 있는’ 세상에서 가장 분홍색 물감을 팔며 맞섰습니다.']},
+];
+
+const FAM = {red:['빨강','#E31B23'],orange:['주황','#FF7F00'],yellow:['노랑','#FFE100'],green:['초록','#1E9E4A'],cyan:['청록','#008080'],blue:['파랑','#1F4FD8'],purple:['보라','#7B2CBF'],pink:['분홍','#FFB7C5'],brown:['갈색','#964B00'],neutral:['무채색','#808080']};
+const FAM_ORDER = Object.keys(FAM);
+
+KOREAN.forEach(k=>{k.t='korean'});
+PIGMENTS.forEach(p=>{p.t='pigment'});
+const ALL = [...BASIC,...KOREAN,...PIGMENTS];
+const BYID = Object.fromEntries(ALL.filter(c=>c.id).map(c=>[c.id,c]));
+
+/* ================= ENGLISH CONTENT ================= */
+const EN = {
+ 'k-cheong':{dir:'East',el:'Wood',season:'Spring',d:'Color of the east, wood and spring — life and hope.',
+  s:['In the five-direction color system (obangsaek), cheong (靑) stands for the east where the sun rises, the element of wood, and spring. It symbolized life, creation and hope.','The old Korean word “pureuda” covered both blue and green — which is why Koreans still call a green traffic light a “blue light” (paran-bul).']},
+ 'k-jeok':{dir:'South',el:'Fire',season:'Summer',d:'Color of the south, fire and summer — believed to ward off evil.',
+  s:['Jeok (赤) corresponds to the south, the element of fire, and summer, carrying the strongest yang energy.','Because red was believed to drive away evil spirits, Koreans ate red-bean porridge on the winter solstice, painted red dots (yeonji) on a bride’s cheeks, and drew talismans in red cinnabar.']},
+ 'k-hwang':{dir:'Center',el:'Earth',season:'Between seasons',d:'Color of the center and earth — the most honored of all.',
+  s:['Hwang (黃) represents the center of the four directions and the element of earth. As the color of the center, it symbolized the emperor.','When King Gojong proclaimed the Korean Empire in 1897, he wore a yellow dragon robe as emperor; earlier Joseon kings wore red.']},
+ 'k-baek':{dir:'West',el:'Metal',season:'Autumn',d:'Color of the west, metal and autumn — purity and integrity.',
+  s:['Baek (白) corresponds to the west, metal and autumn, signifying innocence, purity and truth.','Koreans were once called “the white-clad people,” but that white was closer to sosaek — the natural tone of undyed cotton and hemp — than to bleached white.']},
+ 'k-heuk':{dir:'North',el:'Water',season:'Winter',d:'Color of the north, water and winter — the seat of wisdom.',
+  s:['Heuk (黑) corresponds to the north, water and winter, and symbolizes wisdom.','It also expressed dignity and restraint, as in the scholar’s ink, the gat hat and black official robes.']},
+ 'k-nok':{d:'Between cheong and hwang — set between the east and the center.'},
+ 'k-byeok':{d:'Between cheong and baek — the blue of a clear sky or deep water.'},
+ 'k-hong':{d:'Between jeok and baek — a bright, delicate red.'},
+ 'k-yuhwang':{d:'Between hwang and heuk — a dark, earthy yellow.'},
+ 'k-ja':{d:'Between jeok and heuk — a deep purple.'},
+ 'k-jjok':{d:'Deep blue dyed with fermented indigo-plant leaves — the color behind “blue comes from indigo.”',
+  s:['Jjok (藍) is an annual plant of the knotweed family. Cloth dipped again and again in liquor from its fermented leaves, then aired, turns a deep blue.','The philosopher Xunzi wrote, “Blue comes from indigo, yet is bluer than indigo” (靑取之於藍 而靑於藍). Koreans still use the idiom cheongchul-eoram to praise a student who surpasses the teacher.']},
+ 'k-nam':{d:'A deep blue named after the indigo plant (藍) — a different origin from English “navy.”'},
+ 'k-gam':{d:'A blackish dark indigo, common for school uniforms and suits.'},
+ 'k-ok':{d:'A pale, clear blue-green like jade, beloved for hanbok jackets.'},
+ 'k-bisaek':{d:'The soft green-blue of Goryeo celadon, named after the kingfisher.',
+  s:['In 1123 the Song envoy Xu Jing recorded in his Illustrated Account of Goryeo that Koreans called the color of their celadon “bisaek” (翡色).','Bi (翡) means kingfisher. Traces of iron in the glaze, fired in a reducing kiln, produce its clear, deep blue-green — praised even in China as first under heaven.']},
+ 'k-chija':{d:'A warm yellow from gardenia fruit, used for both cloth and food.'},
+ 'k-songhwa':{d:'The pale yellow of spring pine pollen, as in pine-pollen tea cakes (songhwa dasik).'},
+ 'k-kkokdu':{d:'Red dyed with madder root — the same dye family as Western madder.'},
+ 'k-yeonji':{d:'A lovely red from safflower; the color of the red dots on a bride’s cheeks.'},
+ 'k-dahong':{d:'A deep, vivid red, as in the saying “at the same price, choose the dahong skirt.”'},
+ 'k-juhong':{d:'An orange-red from cinnabar (朱砂), used for seal ink and dancheong.'},
+ 'k-jaju':{d:'A reddish purple dyed with gromwell (jicho) root.'},
+ 'k-bunhong':{d:'Literally “powdered red” — red softened as if with white powder.'},
+ 'k-yeondu':{d:'The soft green of new leaves or young beans.'},
+ 'k-sosaek':{d:'The natural tone of undyed cotton and hemp — the real “white” of the white-clad people.'},
+ 'k-misaek':{d:'A yellowish white like grains of rice.'},
+ 'k-meok':{d:'The black of ink sticks made from pine soot and glue; diluted, it yields countless grays.'},
+ 'p-ochre':{era:'Prehistory · c. 100,000 years ago',o:'Earth, worldwide',s:['Ground earth rich in iron oxide gives yellows, oranges and reds — among the very first colors humans used.','At Blombos Cave in South Africa, archaeologists found a roughly 100,000-year-old “paint workshop” where ochre was ground and stored in shells. The red and yellow animals of Lascaux and Altamira were painted with ochre.']},
+ 'p-indigo':{era:'From c. 6,000 years ago',o:'Peru, India, East Asia (jjok)',s:['Indigo is a blue dye obtained by fermenting the leaves of plants such as indigo, woad and Korean jjok. Cotton dyed with indigo about 6,000 years ago has been found in Peru.','After BASF commercialized synthetic indigo in 1897, the natural indigo trade collapsed. Almost all blue jeans today are dyed with synthetic indigo — the same dye family as Korea’s jjok blue.']},
+ 'p-egyptian':{era:'3rd millennium BCE',o:'Ancient Egypt',s:['Made by heating sand (quartz), copper and lime together, it is considered the first synthetic pigment in history.','Its recipe was lost after Roman times. Because it glows under near-infrared light, scholars now use infrared cameras to find faint traces of it on ancient sculptures and murals.']},
+ 'p-tyrian':{era:'c. 15th century BCE',o:'Tyre, Phoenicia',s:['A purple dye from the glands of Mediterranean murex snails — thousands, perhaps ten thousand, snails were said to be needed for a single gram.','So costly that Rome reserved it for emperors and the elite, it gave English the phrase “born in the purple.”']},
+ 'p-vermilion':{era:'Ancient China & Rome',o:'Cinnabar (mercury sulfide)',s:['A brilliant red made by grinding or synthesizing cinnabar. In East Asia it was called ju (朱) and used for seal ink, lacquerware, dancheong and talismans.','Prized in Rome as well, it colors the intense red walls of the Villa of the Mysteries in Pompeii. Because it contains mercury, mining it was deadly work.']},
+ 'p-ultramarine':{era:'c. 6th century – Renaissance',o:'Lapis lazuli from Badakhshan, Afghanistan',s:['Made by grinding and purifying lapis lazuli mined in Badakhshan, Afghanistan. Its name comes from the Latin ultramarinus, “beyond the sea.”','In the Renaissance it cost more than gold, so contracts specified how much could be used, and it was reserved above all for the robes of the Virgin Mary. In 1826 the French government offered a prize for a synthetic version; Jean-Baptiste Guimet produced one in 1828 and prices fell sharply.']},
+ 'p-carmine':{era:'16th century, to Europe',o:'Cochineal insects of Mexico & Peru',s:['A red made from dried, crushed cochineal insects that live on cacti, long used by the Aztecs and Incas.','When Spain brought it to Europe it reportedly became its most valuable export after silver. It is still used as a food coloring (E120) in strawberry milk, candy and lipstick.']},
+ 'p-mummy':{era:'16th–20th century',o:'Egyptian mummies',s:['A brown pigment really made from ground Egyptian mummies mixed with resin, popular for its transparent, warm shadows.','Pre-Raphaelite painter Edward Burne-Jones is said to have buried his tube in the garden after learning its source. Supplies ran out and production ended in the mid-20th century.']},
+ 'p-prussian':{era:'c. 1706 · Berlin',o:'An accidental experiment',s:['Berlin colormaker Diesbach was trying to make a red when contaminated materials produced this deep blue — considered the first modern synthetic pigment.','Cheap and stable, it spread across Europe and to Japan, where it gave Hokusai’s Great Wave off Kanagawa its deep blue. Today it is also used as an antidote for thallium and radioactive cesium poisoning.']},
+ 'p-scheele':{era:'1775 · Sweden',o:'Copper arsenite',s:['A bright green created by Swedish chemist Carl Wilhelm Scheele, used everywhere in 19th-century wallpaper, dresses, artificial flowers and even sweets.','As an arsenic compound, it could release toxic gas in damp, moldy rooms. One theory links Napoleon’s death on St Helena to the green wallpaper in his room.']},
+ 'p-chrome':{era:'Early 19th century',o:'Lead chromate',s:['A vivid yellow made after chromium was discovered in 1797; cheap and bright, it was a favorite of 19th-century painters.','Van Gogh’s Sunflowers series is the classic example. But it slowly browns in light, and research suggests his sunflowers have darkened over time.']},
+ 'p-cadmium':{era:'1840s',o:'Cadmium sulfide',s:['A bright, opaque yellow made from cadmium, discovered in 1817. More stable than chrome yellow, it was loved by Impressionists painting outdoor light.','Monet favored cadmium yellow for sunlight. Because of its toxicity, some uses are now restricted.']},
+ 'p-mauve':{era:'1856 · London',o:'The first synthetic dye',s:['Eighteen-year-old chemistry student William Perkin found this purple in the residue of a failed attempt to synthesize the malaria drug quinine. It is regarded as the first synthetic dye.','A “mauve mania” swept Europe in the 1860s, and the discovery launched the synthetic dye industry and modern industrial chemistry.']},
+ 'p-titanium':{era:'1920s',o:'Titanium dioxide',s:['A white pigment commercialized in the 1920s to replace highly toxic lead white.','With strong hiding power and low toxicity, it is now the most produced white pigment in the world — found in paint, toothpaste, paper and sunscreen.']},
+ 'p-ikb':{era:'1960 · Paris',o:'Ultramarine + synthetic resin',s:['A binder formula developed by French artist Yves Klein with a chemist to keep the intensity of raw ultramarine powder; it became famous through his 1960 patent filing.','Klein painted entire canvases in this single blue, and IKB became a symbol of the idea that one color can itself be a work of art.']},
+ 'p-yinmn':{era:'2009 · Oregon, USA',o:'Oxides of yttrium, indium & manganese',s:['Discovered by chance by Mas Subramanian’s team at Oregon State University while researching electronic materials; its name comes from Y, In and Mn.','Celebrated as the first new inorganic blue pigment in about 200 years, it inspired Crayola’s crayon color “Bluetiful.”']},
+ 'p-vanta':{era:'2014 · UK',o:'Carbon nanotube coating',s:['A forest of vertically grown carbon nanotubes absorbs about 99.965% of light, earning it the title “blackest substance.” Coated 3D objects look like flat holes.','When sculptor Anish Kapoor obtained exclusive artistic rights to it, artist Stuart Semple responded by selling “the world’s pinkest pink” to everyone except Kapoor.']},
+};
+const FAM_EN={red:'Red',orange:'Orange',yellow:'Yellow',green:'Green',cyan:'Teal',blue:'Blue',purple:'Purple',pink:'Pink',brown:'Brown',neutral:'Neutral'};
+
+
+/* ================= COLOR MATH ================= */
+const clamp=(v,a=0,b=255)=>Math.min(b,Math.max(a,v));
+function normHex(s){s=String(s).trim().replace(/^#/,'').toLowerCase();if(/^[0-9a-f]{3}$/.test(s))s=s.split('').map(c=>c+c).join('');return /^[0-9a-f]{6}$/.test(s)?s:null}
+function hexToRgb(h){h=normHex(h);return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]}
+function rgbToHex(r,g,b){return [r,g,b].map(v=>Math.round(clamp(v)).toString(16).padStart(2,'0')).join('')}
+function rgbToHsl(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);let h=0,s=0,l=(mx+mn)/2;const d=mx-mn;
+ if(d){s=l>.5?d/(2-mx-mn):d/(mx+mn);h=mx===r?((g-b)/d+(g<b?6:0)):mx===g?((b-r)/d+2):((r-g)/d+4);h*=60}return[h,s,l]}
+function hslToRgb(h,s,l){h=((h%360)+360)%360;const c=(1-Math.abs(2*l-1))*s,x=c*(1-Math.abs((h/60)%2-1)),m=l-c/2;let[r,g,b]=h<60?[c,x,0]:h<120?[x,c,0]:h<180?[0,c,x]:h<240?[0,x,c]:h<300?[x,0,c]:[c,0,x];return[(r+m)*255,(g+m)*255,(b+m)*255]}
+function rgbToHsv(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);const[h]=rgbToHsl(r*255,g*255,b*255);return[h,mx?(mx-mn)/mx:0,mx]}
+function rgbToCmyk(r,g,b){r/=255;g/=255;b/=255;const k=1-Math.max(r,g,b);if(k>=1)return[0,0,0,100];return[(1-r-k)/(1-k),(1-g-k)/(1-k),(1-b-k)/(1-k),k].map(v=>Math.round(v*100))}
+const lin=v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4};
+const delin=v=>255*(v<=.0031308?12.92*v:1.055*v**(1/2.4)-.055);
+function rgbToLab(r,g,b){const R=lin(r),G=lin(g),B=lin(b);
+ let x=(R*.4124564+G*.3575761+B*.1804375)/.95047,y=(R*.2126729+G*.7151522+B*.0721750),z=(R*.0193339+G*.1191920+B*.9503041)/1.08883;
+ const f=t=>t>216/24389?Math.cbrt(t):(24389/27*t+16)/116;x=f(x);y=f(y);z=f(z);return[116*y-16,500*(x-y),200*(y-z)]}
+function labToLch([L,a,b]){let h=Math.atan2(b,a)*180/Math.PI;if(h<0)h+=360;return[L,Math.hypot(a,b),h]}
+function de2000(p,q){const[L1,a1,b1]=p,[L2,a2,b2]=q,rad=Math.PI/180;
+ const C1=Math.hypot(a1,b1),C2=Math.hypot(a2,b2),Cm=(C1+C2)/2,G=.5*(1-Math.sqrt(Cm**7/(Cm**7+25**7)));
+ const a1p=(1+G)*a1,a2p=(1+G)*a2,C1p=Math.hypot(a1p,b1),C2p=Math.hypot(a2p,b2);
+ const hh=(b,a)=>{if(!a&&!b)return 0;let x=Math.atan2(b,a)/rad;return x<0?x+360:x};
+ const h1p=hh(b1,a1p),h2p=hh(b2,a2p),dLp=L2-L1,dCp=C2p-C1p;
+ let dhp=0;if(C1p*C2p){dhp=h2p-h1p;if(dhp>180)dhp-=360;else if(dhp<-180)dhp+=360}
+ const dHp=2*Math.sqrt(C1p*C2p)*Math.sin(dhp*rad/2),Lpm=(L1+L2)/2,Cpm=(C1p+C2p)/2;
+ let hpm=h1p+h2p;if(C1p*C2p){hpm=Math.abs(h1p-h2p)>180?(h1p+h2p<360?(h1p+h2p+360)/2:(h1p+h2p-360)/2):(h1p+h2p)/2}
+ const T=1-.17*Math.cos((hpm-30)*rad)+.24*Math.cos(2*hpm*rad)+.32*Math.cos((3*hpm+6)*rad)-.2*Math.cos((4*hpm-63)*rad);
+ const dT=30*Math.exp(-(((hpm-275)/25)**2)),RC=2*Math.sqrt(Cpm**7/(Cpm**7+25**7));
+ const SL=1+.015*(Lpm-50)**2/Math.sqrt(20+(Lpm-50)**2),SC=1+.045*Cpm,SH=1+.015*Cpm*T,RT=-Math.sin(2*dT*rad)*RC;
+ return Math.sqrt((dLp/SL)**2+(dCp/SC)**2+(dHp/SH)**2+RT*(dCp/SC)*(dHp/SH))}
+function lum(r,g,b){return .2126*lin(r)+.7152*lin(g)+.0722*lin(b)}
+function contrast(c1,c2){const a=lum(...c1),b=lum(...c2);return (Math.max(a,b)+.05)/(Math.min(a,b)+.05)}
+function textOn(rgb){return contrast(rgb,[255,255,255])>=contrast(rgb,[0,0,0])?'#fff':'#111'}
+function family(rgb){const[h,s,l]=rgbToHsl(...rgb);
+ if(s<.12||l<.07||l>.96)return'neutral';
+ if(h>=12&&h<50&&(l<.42||(s<.5&&l<.8)))return'brown';
+ if((h<12||h>=345)&&l>=.75)return'pink';
+ if(h<12||h>=345)return'red';
+ if(h>=300)return'pink';
+ if(h<40)return'orange';if(h<70)return'yellow';if(h<160)return'green';if(h<195)return'cyan';if(h<255)return'blue';return'purple'}
+const CB={prot:[[.152286,1.052583,-.204868],[.114503,.786281,.099216],[-.003882,-.048116,1.051998]],
+ deut:[[.367322,.860646,-.227968],[.280085,.672501,.047413],[-.01182,.04294,.968881]],
+ trit:[[1.255528,-.076749,-.178779],[-.078411,.930809,.147602],[.004733,.691367,.3039]]};
+function simCB(rgb,m){const v=rgb.map(lin);return rgbToHex(...m.map(r=>delin(clamp(r[0]*v[0]+r[1]*v[1]+r[2]*v[2],0,1))))}
+
+ALL.forEach(c=>{c.rgb=hexToRgb(c.h);c.lab=rgbToLab(...c.rgb);c.hx=normHex(c.h)});
+
+function nearest(lab,n=6,skipHex){return ALL.filter(c=>c.hx!==skipHex).map(c=>({c,d:de2000(lab,c.lab)})).sort((a,b)=>a.d-b.d).slice(0,n)}
+function curatedFor(hx){return ALL.find(c=>c.hx===hx&&c.id)||ALL.find(c=>c.hx===hx)}
+
+/* ================= LANGUAGE ================= */
+let L=(()=>{try{const s=localStorage.getItem('ca-lang');if(s==='ko'||s==='en')return s}catch(e){}return (navigator.language||'ko').toLowerCase().startsWith('ko')?'ko':'en'})();
+const t=(ko,en)=>L==='en'?en:ko;
+const ENof=c=>(c&&c.id&&EN[c.id])||{};
+const nm=c=>t(c.n,c.e);
+const alt=c=>t(c.e+(c.hj?' · '+c.hj:''),c.n+(c.hj?' '+c.hj:''));
+const desc=c=>t(c.d,ENof(c).d||c.d);
+const story=c=>t(c.story,ENof(c).s||c.story);
+const era=c=>t(c.era,ENof(c).era||c.era);
+const orig=c=>t(c.o,ENof(c).o||c.o);
+const famName=f=>t(FAM[f][0],FAM_EN[f]);
+const ob=(c,k)=>t(c[k],ENof(c)[k]||c[k]);
+
+/* ================= UI HELPERS ================= */
+const $=s=>document.querySelector(s);
+const app=$('#app');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const link=hx=>'#c-'+hx;
+function toast(m){const el=$('#toast');el.textContent=m;el.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>el.classList.remove('show'),1400)}
+async function copy(txt){try{await navigator.clipboard.writeText(txt);toast(t('복사됨: ','Copied: ')+txt)}catch(e){toast(t('복사할 수 없는 환경입니다','Copy is not available here'))}}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(b){e.preventDefault();copy(b.dataset.copy)}});
+function chip(c){return `<a class="chip" href="${link(c.hx)}"><div class="sw" style="background:${c.h}"></div><div class="nm"><b>${esc(nm(c))}</b><span>${esc(alt(c))}</span><br><code>#${c.hx.toUpperCase()}</code></div></a>`}
+const randHex=()=>Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6,'0');
+const typeLabel=c=>c.t==='korean'?t('전통색','Korean'):c.t==='pigment'?t('안료','Pigment'):'';
+
+/* ---- search ---- */
+function parseQuery(q){q=q.trim();let h=normHex(q);if(h)return h;
+ const m=q.match(/^(?:rgb\s*\()?\s*(\d{1,3})\s*[,\s]\s*(\d{1,3})\s*[,\s]\s*(\d{1,3})\s*\)?$/i);
+ if(m&&[m[1],m[2],m[3]].every(v=>+v<=255))return rgbToHex(+m[1],+m[2],+m[3]);return null}
+function searchBox(id){return `<div class="search" id="${id}"><div class="search-row">
+ <input type="text" placeholder="${t('색 이름(쪽빛, ultramarine) 또는 #2463A6, rgb(36,99,166)','Color name (ultramarine, 쪽빛) or #2463A6, rgb(36,99,166)')}" autocomplete="off">
+ <input type="color" class="picker" value="#2463a6" title="${t('직접 고르기','Pick a color')}">
+ <button class="btn" data-act="go">${t('찾기','Search')}</button></div><div class="sugg"></div></div>`}
+function bindSearch(id){const root=document.getElementById(id);if(!root)return;const inp=root.querySelector('input[type=text]'),sg=root.querySelector('.sugg'),pk=root.querySelector('.picker');let items=[],sel=0;
+ const render=()=>{const q=inp.value.trim();items=[];if(!q){sg.style.display='none';return}
+  const hx=parseQuery(q);if(hx)items.push({hx,label:'#'+hx.toUpperCase()+t(' 색 페이지 열기',' — open color page'),sub:''});
+  const ql=q.toLowerCase();ALL.filter(c=>c.n.includes(q)||c.e.toLowerCase().includes(ql)||(c.hj&&c.hj.includes(q))).slice(0,8).forEach(c=>items.push({hx:c.hx,label:nm(c),sub:alt(c)}));
+  if(!items.length){sg.innerHTML=`<a>${t('일치하는 색이 없어요. HEX 코드로 검색해 보세요.','No match. Try a HEX code.')}</a>`;sg.style.display='block';return}
+  sel=0;sg.innerHTML=items.map((it,i)=>`<a href="${link(it.hx)}" class="${i===sel?'sel':''}"><span class="sw" style="background:#${it.hx}"></span><span>${esc(it.label)} <span style="color:var(--sub)">${esc(it.sub)}</span></span><span class="hx">#${it.hx.toUpperCase()}</span></a>`).join('');sg.style.display='block'};
+ inp.addEventListener('input',render);
+ inp.addEventListener('keydown',e=>{const as=sg.querySelectorAll('a[href]');
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(!as.length)return;sel=(sel+(e.key==='ArrowDown'?1:-1)+as.length)%as.length;as.forEach((a,i)=>a.classList.toggle('sel',i===sel))}
+  if(e.key==='Enter'&&!e.isComposing){e.preventDefault();render();if(items[sel])location.hash='c-'+items[sel].hx}
+  if(e.key==='Escape')sg.style.display='none'});
+ inp.addEventListener('blur',()=>setTimeout(()=>sg.style.display='none',180));
+ root.querySelector('[data-act=go]').onclick=()=>{render();if(items[0])location.hash='c-'+items[0].hx};
+ pk.addEventListener('change',()=>location.hash='c-'+normHex(pk.value));}
+
+/* ================= CHROME (header/footer) ================= */
+function renderChrome(){
+ document.documentElement.lang=L;
+ $('#menu').innerHTML=[['home',t('홈','Home')],['atlas',t('색상 지도','Atlas')],['korean',t('한국의 색','Korean Colors')],['pigments',t('안료 이야기','Pigments')],['match',t('어울리는 색','Color Match'),'outfit']].map(([r,l,h])=>`<a href="#${h||r}" data-r="${r}">${l}</a>`).join('')+`<button id="lang" class="langbtn" title="Language">${t('EN','한국어')}</button>`;
+ $('#logo-name').textContent=t('색채의 세계','Color Atlas');
+ $('#logo-sub').textContent=t('COLOR ATLAS','색채의 세계');
+ $('#foot').innerHTML=t('색채의 세계 시제품 v0.3 · 어떤 HEX 코드든 자동으로 색 페이지가 만들어집니다. 전통색과 역사적 안료의 HEX 값은 화면 표시용 근사값이며, 실제 색은 재료·제법·문헌에 따라 다릅니다.<br>색차 계산: CIEDE2000 · 색각 이상 시뮬레이션: Machado et al.(2009) · 대비: WCAG 2.x 기준.',
+  'Color Atlas prototype v0.3 · Every HEX code gets its own auto-generated page. HEX values for traditional colors and historical pigments are on-screen approximations; real colors vary by material, method and source.<br>Color difference: CIEDE2000 · Color-vision simulation: Machado et al. (2009) · Contrast: WCAG 2.x.');
+ $('#lang').onclick=()=>{L=L==='ko'?'en':'ko';try{localStorage.setItem('ca-lang',L)}catch(e){}renderChrome();route(true)};
+}
+
+/* ================= VIEWS ================= */
+function viewHome(){
+ const stories=[...KOREAN.filter(k=>k.story),...PIGMENTS];
+ const d=new Date(),seed=d.getFullYear()*372+d.getMonth()*31+d.getDate();
+ const today=stories[seed%stories.length],tc=textOn(today.rgb);
+ const mosaic=[...KOREAN,...PIGMENTS,...BASIC].sort((a,b)=>rgbToHsl(...a.rgb)[0]-rgbToHsl(...b.rgb)[0]).filter((c,i)=>i%2===0).slice(0,48)
+   .sort((a,b)=>{const fa=family(a.rgb)==='neutral',fb=family(b.rgb)==='neutral';return fa-fb||rgbToHsl(...a.rgb)[0]-rgbToHsl(...b.rgb)[0]});
+ const strip=list=>`<div class="strip">${list.map(c=>`<i style="background:${c.h}"></i>`).join('')}</div>`;
+ app.innerHTML=`
+ <section class="hero"><div>
+   <div class="kicker">${t('세상의 모든 색, 그리고 그 이야기','Every color in the world, and its story')}</div>
+   <h1 class="serif">${t('색채의 세계','Color Atlas')}</h1>
+   <p>${t('1,677만 개의 모든 디지털 색에 페이지가 있습니다. 코드를 넣으면 이름과 조합, 접근성을 계산해 드리고, 이름 있는 색에는 그 색이 걸어온 역사를 들려드립니다.','All 16.7 million digital colors have a page here. Enter a code to get its nearest names, harmonies and accessibility — and for named colors, the history behind them.')}</p>
+   ${searchBox('s-home')}
+   <div class="hint">${t('예','Try')}: <code>${t('쪽빛','ultramarine')}</code> <code>${t('ultramarine','쪽빛')}</code> <code>#002FA7</code> <code>rgb(200,35,31)</code> · <a href="#" id="rnd">${t('아무 색이나 열어 보기 →','Open a random color →')}</a></div>
+ </div>
+ <div class="hero-mosaic">${mosaic.map(c=>`<a href="${link(c.hx)}" title="${esc(nm(c))}" style="background:${c.h}"></a>`).join('')}</div></section>
+
+ <h2>${t('오늘의 색','Color of the Day')}</h2><p class="lead">${t('날마다 하나씩, 이야기가 있는 색을 소개합니다.','A color with a story, every day.')}</p>
+ <a class="today" href="${link(today.hx)}"><div class="sw" style="background:${today.h};color:${tc}">#${today.hx.toUpperCase()}</div>
+  <div class="tx"><div class="kicker">${today.t==='korean'?t('한국의 색','Korean Colors'):t('안료 이야기','Pigments')+' · '+esc(era(today))}</div><h3 class="serif">${esc(nm(today))} <span style="font-size:15px;color:var(--sub);font-family:'Noto Sans KR';font-weight:400">${esc(alt(today))}</span></h3><p style="margin:0;color:#3E3A34">${esc(story(today)[0])}</p></div></a>
+
+ <h2>${t('둘러보기','Explore')}</h2><p class="lead">${t('네 가지 길로 색을 탐험해 보세요.','Four ways into the world of color.')}</p>
+ <div class="cards">
+  <a class="card" href="#atlas">${strip(FAM_ORDER.map(f=>({h:FAM[f][1]})))}<h3 class="serif">${t('색상 지도','Atlas')}</h3><p>${t(`스펙트럼을 클릭해 어떤 색이든 열고, 계열별로 이름 있는 색 ${ALL.length}개를 둘러봅니다.`,`Click the spectrum to open any color, and browse ${ALL.length} named colors by family.`)}</p></a>
+  <a class="card" href="#korean">${strip(KOREAN.filter(k=>k.g==='obang'))}<h3 class="serif">${t('한국의 색','Korean Colors')}</h3><p>${t('오방색과 오간색, 쪽빛·비색·치자색 같은 전통색과 한국어 색 이름 이야기.','The five cardinal colors, traditional dyes like jjok indigo and celadon green, and the stories of Korean color words.')}</p></a>
+  <a class="card" href="#pigments">${strip(PIGMENTS.slice(0,10))}<h3 class="serif">${t('안료 이야기','Pigments')}</h3><p>${t('10만 년 전 오커부터 2009년 YInMn 블루까지, 색을 만든 사람들의 연대기.','From 100,000-year-old ochre to 2009’s YInMn Blue — a timeline of how humans made color.')}</p></a>
+  <a class="card" href="#outfit">${strip(['b5834f','eadbb8','3f5d86','b9a7d9','e69f00','56b4e9','009e73','0072b2'].map(h=>({h:'#'+h})))}<h3 class="serif">${t('어울리는 색','Color Match')}</h3><p>${t('상·하의와 코트·이너 코디, 퍼스널 컬러, 그래프에서 잘 구별되는 차트 색까지.','Outfit pairings, personal color, and chart palettes that stay readable.')}</p></a>
+ </div>`;
+ bindSearch('s-home');
+ $('#rnd').onclick=e=>{e.preventDefault();location.hash='c-'+randHex()};
+}
+
+let atlasFam='all';
+function viewAtlas(){
+ app.innerHTML=`<h1 class="serif" style="font-size:34px;margin:0 0 4px">${t('색상 지도','Atlas')}</h1>
+ <p class="lead">${t('스펙트럼 위 아무 곳이나 누르면 그 색의 페이지가 열립니다. 아래에는 이름 있는 색들이 계열별로 정리되어 있습니다.','Click anywhere on the spectrum to open that color’s page. Below, named colors are grouped by family.')}</p>
+ ${searchBox('s-atlas')}
+ <div style="height:18px"></div>
+ <div class="spectrum-wrap" id="specwrap"><canvas id="spec"></canvas><canvas id="grayspec"></canvas><div class="spec-tip" id="tip"></div></div>
+ <h2>${t('이름 있는 색','Named Colors')}</h2><p class="lead">${t(`기본 색 이름 ${BASIC.length}개 · 한국 전통색 ${KOREAN.length}개 · 역사적 안료 ${PIGMENTS.length}개 (밝기순)`,`${BASIC.length} basic color names · ${KOREAN.length} Korean traditional colors · ${PIGMENTS.length} historical pigments (by lightness)`)}</p>
+ <div class="fam-tabs" id="tabs"></div><div class="grid" id="agrid"></div>`;
+ bindSearch('s-atlas');
+ const tabs=$('#tabs');
+ const counts={};ALL.forEach(c=>{const f=family(c.rgb);counts[f]=(counts[f]||0)+1});
+ tabs.innerHTML=`<button data-f="all">${t('전체','All')} ${ALL.length}</button>`+FAM_ORDER.map(f=>`<button data-f="${f}"><i style="background:${FAM[f][1]}"></i>${famName(f)} ${counts[f]||0}</button>`).join('');
+ const draw=()=>{tabs.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.f===atlasFam));
+  const list=ALL.filter(c=>atlasFam==='all'||family(c.rgb)===atlasFam).sort((a,b)=>atlasFam==='all'?(FAM_ORDER.indexOf(family(a.rgb))-FAM_ORDER.indexOf(family(b.rgb))||b.lab[0]-a.lab[0]):b.lab[0]-a.lab[0]);
+  $('#agrid').innerHTML=list.map(chip).join('')};
+ tabs.onclick=e=>{const b=e.target.closest('button');if(b){atlasFam=b.dataset.f;draw()}};draw();
+ const cv=$('#spec'),gv=$('#grayspec'),tip=$('#tip'),wrap=$('#specwrap');
+ const paint=()=>{const W=cv.clientWidth,H=280,G=36;cv.width=W;cv.height=H;gv.width=W;gv.height=G;
+  const ctx=cv.getContext('2d'),img=ctx.createImageData(W,H);
+  for(let y=0;y<H;y++){const l=.96-.9*(y/(H-1));for(let x=0;x<W;x++){const[r,g,b]=hslToRgb(360*x/W,.9,l);const i=(y*W+x)*4;img.data[i]=r;img.data[i+1]=g;img.data[i+2]=b;img.data[i+3]=255}}
+  ctx.putImageData(img,0,0);const g2=gv.getContext('2d');const gr=g2.createLinearGradient(0,0,W,0);gr.addColorStop(0,'#fff');gr.addColorStop(1,'#000');g2.fillStyle=gr;g2.fillRect(0,0,W,G)};
+ paint();
+ const pick=(e,c)=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+  if(c===gv){const v=Math.round(255*(1-x));return rgbToHex(v,v,v)}return rgbToHex(...hslToRgb(360*x,.9,.96-.9*y))};
+ [cv,gv].forEach(c=>{c.addEventListener('mousemove',e=>{const hx=pick(e,c),wr=wrap.getBoundingClientRect();const near=nearest(rgbToLab(...hexToRgb(hx)),1)[0];
+   tip.style.display='block';tip.textContent='#'+hx.toUpperCase()+' · '+(near.d<6?'≈ ':'~ ')+nm(near.c);tip.style.left=Math.min(e.clientX-wr.left+12,wr.width-190)+'px';tip.style.top=(e.clientY-wr.top+12)+'px'});
+  c.addEventListener('mouseleave',()=>tip.style.display='none');
+  c.addEventListener('click',e=>location.hash='c-'+pick(e,c))});
+ window.onresize=()=>{if(document.getElementById('spec'))paint()};
+}
+
+function viewKorean(){
+ const O=id=>BYID[id];
+ const rom=c=>c.e.split(' (')[0];
+ const obt=c=>{const tc=textOn(c.rgb);return `<a href="${link(c.hx)}" style="background:${c.h};color:${tc};${c.id==='k-baek'?'border:1px solid var(--line)':''}"><b>${c.hj}</b><span>${t(`${c.n}(${c.hj}) · ${c.dir}<br>${c.el} · ${c.season}`,`${rom(c)} · ${ob(c,'dir')}<br>${ob(c,'el')} · ${ob(c,'season')}`)}</span></a>`};
+ const tcard=c=>`<a class="tcard" href="${link(c.hx)}"><div class="sw" style="background:${c.h};${c.rgb[0]>230&&c.rgb[1]>220?'border:1px solid var(--line)':''}"></div><div><b>${esc(nm(c))}</b><span class="hj">${esc(t(c.hj||'',c.n+(c.hj?' '+c.hj:'')))}</span><p>${esc(desc(c))}</p></div></a>`;
+ const vsPair=(a,b,la,lb)=>`<div class="pair"><a href="${link(normHex(a))}" style="background:${a};color:${textOn(hexToRgb(a))}">${la}</a><a href="${link(normHex(b))}" style="background:${b};color:${textOn(hexToRgb(b))}">${lb}</a></div>`;
+ const mixName=id=>t(O(id).n,rom(O(id)));
+ app.innerHTML=`<h1 class="serif" style="font-size:34px;margin:0 0 4px">${t('한국의 색','Korean Colors')}</h1>
+ <p class="lead">${t('음양오행에서 나온 다섯 정색(오방색)과 그 사이의 다섯 간색(오간색), 그리고 자연에서 얻은 염료로 이어 온 우리 색 이름들.','Five cardinal colors born of yin-yang and the five elements (obangsaek), the five intermediate colors between them (ogansaek), and Korean color names drawn from natural dyes.')}</p>
+ <h2>${t('오방색 五方色','Obangsaek 五方色 · The Five Cardinal Colors')}</h2>
+ <div class="obang-wrap"><div class="obang">
+   <span></span>${obt(O('k-heuk'))}<span></span>
+   ${obt(O('k-baek'))}${obt(O('k-hwang'))}${obt(O('k-cheong'))}
+   <span></span>${obt(O('k-jeok'))}<span></span>
+ </div>
+ <div>${t(`<p>오방색은 <b>청·적·황·백·흑</b> 다섯 가지 색으로, 각각 동·남·중앙·서·북의 방위와 목·화·토·금·수의 오행에 대응합니다.</p>
+ <p>색동저고리, 단청, 오방장두루마기, 잔치국수의 고명, 비빔밥까지 — 오방색은 옷과 건축, 음식에 두루 스며 조화와 액막이의 의미를 담았습니다.</p>
+ <p style="color:var(--sub);font-size:14px">왼쪽 배치는 지도처럼 위를 북쪽으로 두었습니다. 색을 누르면 상세 페이지로 이동합니다.</p>`,
+ `<p>Obangsaek are five colors — <b>blue, red, yellow, white and black</b> — matched to the east, south, center, west and north, and to the elements wood, fire, earth, metal and water.</p>
+ <p>From rainbow-striped saekdong jackets and painted dancheong eaves to the garnish on festive noodles and bibimbap, the five colors run through Korean clothing, architecture and food, carrying wishes for harmony and protection from misfortune.</p>
+ <p style="color:var(--sub);font-size:14px">The layout puts north at the top, like a map. Click a color to open its page.</p>`)}</div></div>
+ <h2>${t('오간색 五間色','Ogansaek 五間色 · The Five Intermediate Colors')}</h2><p class="lead">${t('이웃한 두 정색 사이에서 생겨난 다섯 간색입니다.','Five colors that arise between neighboring cardinal colors.')}</p>
+ <div class="ogan">${KOREAN.filter(k=>k.g==='ogan').map(c=>`<a href="${link(c.hx)}"><div class="sw" style="background:${c.h};color:${textOn(c.rgb)}">${c.hj}</div><div class="f"><b>${t(`${c.n}(${c.hj})`,esc(c.e))}</b><div class="mix"><i style="background:${O(c.mix[0]).h}"></i>${mixName(c.mix[0])} + <i style="background:${O(c.mix[1]).h}"></i>${mixName(c.mix[1])}</div><div style="color:var(--sub);margin-top:4px">${esc(desc(c))}</div></div></a>`).join('')}</div>
+ <h2>${t('전통색 이름','Traditional Color Names')}</h2><p class="lead">${t('식물·광물·곡식 등 자연에서 이름을 얻은 색들입니다.','Colors named after plants, minerals and grains.')}</p>
+ <div class="tcards">${KOREAN.filter(k=>k.g==='trad').map(tcard).join('')}</div>
+ <h2>${t('같은 이름, 다른 색','Same Name, Different Color')}</h2><p class="lead">${t('색 이름은 언어와 문화, 시대에 따라 달라집니다.','Color names shift with language, culture and time.')}</p>
+ <div class="vs">
+  <div class="card">${vsPair('#2C3E8C','#000080',t('남색','Nam'),'Navy')}<h3 class="serif">${t('남색 ≠ 네이비','Nam ≠ Navy')}</h3><p>${t('남색은 염료 식물 쪽(藍)에서, 네이비는 18세기 영국 해군 제복 색에서 이름이 왔습니다. 비슷해 보여도 출발점이 전혀 다릅니다.','Korean nam comes from the indigo plant (藍); navy comes from the 18th-century Royal Navy uniform. Similar shades, entirely different origins.')}</p></div>
+  <div class="card">${vsPair('#1F5FA8','#1E9E4A',t('푸르다','Pureuda'),t('파란불','Paran-bul'))}<h3 class="serif">${t('‘푸르다’는 파랑일까 초록일까','Is “pureuda” blue or green?')}</h3><p>${t('옛 한국어의 ‘푸르다’는 파랑과 초록을 함께 가리켰습니다. 초록 신호등을 ‘파란불’, 푸른 들판을 ‘푸르다’고 하는 이유입니다.','Old Korean pureuda meant both blue and green — so Koreans call a green traffic light a “blue light” (paran-bul) and describe green fields as pureun.')}</p></div>
+  <div class="card">${vsPair('#FFD7B5','#FBCEB1',t('연주황','Yeonjuhwang'),t('살구색','Salgusaek'))}<h3 class="serif">${t('살색 → 연주황 → 살구색','“Skin color” → Light orange → Apricot')}</h3><p>${t('2001년 국가인권위원회가 ‘살색’이 특정 피부색만을 뜻해 차별적이라 권고하자 2002년 ‘연주황’으로 바뀌었고, 어린이들이 한자어가 어렵다고 다시 진정해 2005년 ‘살구색’이 되었습니다.','In 2001 Korea’s National Human Rights Commission found the crayon name salsaek (“skin color”) discriminatory. It became yeonjuhwang (light orange) in 2002, then salgusaek (apricot) in 2005 after children petitioned that the Sino-Korean word was too hard.')}</p></div>
+ </div>`;
+}
+
+function viewPigments(){
+ const list=[...PIGMENTS].sort((a,b)=>a.y-b.y);
+ app.innerHTML=`<h1 class="serif" style="font-size:34px;margin:0 0 4px">${t('안료 이야기','Pigments')}</h1>
+ <p class="lead">${t('색은 언제나 재료였습니다. 흙과 돌, 벌레와 조개, 실험실의 우연까지 — 인류가 새로운 색을 손에 넣은 순간들을 시간순으로 따라갑니다.','Color has always been a material. Earth and stone, insects and shellfish, happy accidents in the lab — follow the moments when humanity gained a new color.')}</p>
+ <div class="tl">${list.map(p=>`<div class="tl-item"><span class="tl-dot" style="background:${p.h}"></span>
+  <a class="tl-card" href="${link(p.hx)}"><div class="sw" style="background:${p.h}"></div><div class="bd"><div class="era">${esc(era(p))} · ${esc(orig(p))}</div><h3 class="serif">${esc(nm(p))}<span>${esc(alt(p))}</span></h3><p>${esc(story(p)[0])}</p></div></a></div>`).join('')}</div>`;
+}
+
+function viewColor(hx){
+ const rgb=hexToRgb(hx),hsl=rgbToHsl(...rgb),hsv=rgbToHsv(...rgb),cmyk=rgbToCmyk(...rgb),lab=rgbToLab(...rgb),lch=labToLch(lab);
+ const named=curatedFor(hx),fam=family(rgb),tc=textOn(rgb);
+ const near=nearest(lab,6,named?hx:null);
+ const top=near[0];
+ const Lw=lab[0]>85?t('아주 밝은','very light'):lab[0]>65?t('밝은','light'):lab[0]>40?t('중간 밝기의','mid-tone'):lab[0]>20?t('어두운','dark'):t('아주 어두운','very dark');
+ const Cw=lch[1]<8?t('무채색에 가까운','near-neutral'):lch[1]<25?t('차분한','muted'):lch[1]<55?t('선명한','vivid'):t('매우 선명한','highly saturated');
+ const deWord=d=>d<1?t('눈으로 구별하기 어려울 만큼 같음','practically identical'):d<3?t('아주 비슷함','very similar'):d<6?t('비슷함','similar'):d<12?t('닮음','related'):t('계열이 같음','same family');
+ const title=named?nm(named):(top.d<3?'≈ '+nm(top.c):'#'+hx.toUpperCase());
+ const sub=named?alt(named):(top.d<3?t('가장 가까운 이름: ','Closest name: ')+nm(top.c)+' ('+alt(top.c)+')':t('이름 없는 색 · 가장 가까운 이름은 ','Unnamed color · closest name: ')+nm(top.c));
+ const f=(v,d=0)=>(+v).toFixed(d);
+ const rows=[['HEX','#'+hx.toUpperCase()],['RGB',`rgb(${rgb.join(', ')})`],['HSL',`hsl(${f(hsl[0])}, ${f(hsl[1]*100)}%, ${f(hsl[2]*100)}%)`],['HSV',`hsv(${f(hsv[0])}, ${f(hsv[1]*100)}%, ${f(hsv[2]*100)}%)`],['CMYK',`cmyk(${cmyk.join('%, ')}%)`],['LAB',`lab(${f(lab[0],1)} ${f(lab[1],1)} ${f(lab[2],1)})`],['LCH',`lch(${f(lch[0],1)} ${f(lch[1],1)} ${f(lch[2])})`]];
+ const rot=d=>rgbToHex(...hslToRgb(hsl[0]+d,hsl[1],hsl[2]));
+ const harms=[[t('보색','Complementary'),'Complementary',[0,180]],[t('유사색','Analogous'),'Analogous',[-30,0,30]],[t('삼각 배색','Triadic'),'Triadic',[0,120,240]],[t('분할 보색','Split complementary'),'Split',[0,150,210]],[t('사각 배색','Tetradic'),'Tetradic',[0,90,180,270]]];
+ const sw=(h,cur)=>{const r=hexToRgb(h);return `<a href="${link(h)}" ${cur?'class="cur"':''} style="background:#${h};color:${textOn(r)}">${h.toUpperCase()}</a>`};
+ const tints=[.85,.7,.55,.4,.2].map(v=>rgbToHex(...rgb.map(c=>c+(255-c)*v)));
+ const shades=[.2,.4,.55,.7,.85].map(v=>rgbToHex(...rgb.map(c=>c*(1-v))));
+ const cw=contrast(rgb,[255,255,255]),cbk=contrast(rgb,[0,0,0]);
+ const bd=r=>`<span class="badge ${r>=4.5?'ok':'no'}">AA ${r>=4.5?'✓':'✕'}</span><span class="badge ${r>=7?'ok':'no'}">AAA ${r>=7?'✓':'✕'}</span><span class="badge ${r>=3?'ok':'no'}">${t('큰 글씨','Large')} ${r>=3?'✓':'✕'}</span>`;
+ const tags=[`<span class="tag">${t(famName(fam)+' 계열',famName(fam)+' family')}</span>`];
+ if(named&&named.t==='korean')tags.push(`<span class="tag">${t('한국 전통색','Korean traditional')}${named.g==='obang'?t(' · 오방색',' · Obangsaek'):named.g==='ogan'?t(' · 오간색',' · Ogansaek'):''}</span>`);
+ if(named&&named.t==='pigment')tags.push(`<span class="tag">${t('역사적 안료','Historical pigment')} · ${esc(era(named))}</span>`);
+ const paras=named?(named.story?story(named):named.d?[desc(named)]:null):null;
+ const storyHtml=paras?`<div class="story" style="border-left-color:${named.h}">
+   <div class="kicker">${named.t==='pigment'?t('안료 이야기','Pigment story'):t('한국의 색','Korean color')}</div>
+   <h3 class="serif">${esc(nm(named))} ${named.hj?`<span style="font-weight:400;color:var(--sub)">${esc(named.hj)}</span>`:''}</h3>
+   ${named.t==='pigment'?`<div class="meta"><span>${t('시기','Period')} · ${esc(era(named))}</span><span>${t('원료','Source')} · ${esc(orig(named))}</span></div>`:''}
+   ${named.g==='obang'?`<div class="meta"><span>${t('방위','Direction')} · ${ob(named,'dir')}</span><span>${t('오행','Element')} · ${ob(named,'el')}</span><span>${t('계절','Season')} · ${ob(named,'season')}</span></div>`:''}
+   ${named.mix?`<div class="meta"><span>${t(`${BYID[named.mix[0]].n} + ${BYID[named.mix[1]].n} 사이의 간색`,`Intermediate color between ${BYID[named.mix[0]].e.split(' (')[0]} and ${BYID[named.mix[1]].e.split(' (')[0]}`)}</span></div>`:''}
+   ${paras.map(p=>`<p>${esc(p)}</p>`).join('')}
+   <p style="font-size:12.5px;color:var(--sub);margin-top:10px">${t('※ 화면의 HEX 값은 대표 근사값입니다.','※ The HEX value shown is a representative approximation.')}</p></div>`:'';
+ const prev=(parseInt(hx,16)-1+0x1000000)%0x1000000,next=(parseInt(hx,16)+1)%0x1000000;
+ const P=n=>n.toString(16).padStart(6,'0');
+ app.innerHTML=`
+ <div class="cp-hero" style="background:#${hx};color:${tc};${lab[0]>94?'border:1px solid var(--line)':''}">
+  <div class="cp-nav"><button data-copy="#${hx.toUpperCase()}">${t('HEX 복사','Copy HEX')}</button><button id="rnd2">${t('무작위 색 →','Random →')}</button></div>
+  <div><div class="kicker" style="color:inherit;opacity:.75">${named?t('이름 있는 색','Named color'):t('자동 생성 페이지','Auto-generated page')}</div>
+   <h1 class="serif">${esc(title)}</h1><div class="en">${esc(sub)}</div><div class="tags">${tags.join('')}</div></div>
+  <div class="codes">#${hx.toUpperCase()} · RGB ${rgb.join(', ')} · HSL ${f(hsl[0])}°, ${f(hsl[1]*100)}%, ${f(hsl[2]*100)}%</div>
+ </div>
+ <p class="auto-desc">${t(
+  `이 색은 <b>${famName(fam)} 계열</b>의 <b>${Lw} ${Cw}</b> 색입니다. 이름 있는 색 가운데 가장 가까운 것은 <a href="${link(top.c.hx)}"><b>${esc(nm(top.c))}</b></a>(${esc(top.c.e)})으로, 색차 ΔE ${f(top.d,1)} — ${deWord(top.d)}.${named?'':' 이 페이지는 HEX 코드로부터 자동으로 만들어졌습니다.'}`,
+  `This is a <b>${Lw}, ${Cw}</b> color in the <b>${famName(fam)} family</b>. The closest named color is <a href="${link(top.c.hx)}"><b>${esc(nm(top.c))}</b></a> (${esc(top.c.n)}), with a color difference of ΔE ${f(top.d,1)} — ${deWord(top.d)}.${named?'':' This page was generated automatically from its HEX code.'}`)}</p>
+ ${storyHtml}
+ <h2>${t('색 코드','Color Codes')}</h2>
+ <div class="two">
+  <div class="panel"><h3>${t('표기법별 값','Values by notation')}</h3><table class="codes-table">${rows.map(([k,v])=>`<tr><td>${k}</td><td>${v}</td><td><button class="copy" data-copy="${v}">${t('복사','Copy')}</button></td></tr>`).join('')}</table></div>
+  <div class="panel"><h3>${t('가까운 이름 있는 색','Nearest named colors')} <span style="font-weight:400;color:var(--sub);font-size:13px">CIEDE2000</span></h3><div class="near">${near.map(({c,d})=>`<a href="${link(c.hx)}"><span class="sw" style="background:${c.h}"></span><div><b>${esc(nm(c))}</b><span>${esc(alt(c))}${typeLabel(c)?' · '+typeLabel(c):''}</span></div><div class="de">ΔE ${f(d,1)}<br>#${c.hx.toUpperCase()}</div></a>`).join('')}</div></div>
+ </div>
+ <h2>${t('배색','Harmonies')}</h2><p class="lead">${t('색상환에서 각도를 돌려 만든 조합입니다. 색을 누르면 그 색으로 이동합니다.','Combinations made by rotating around the color wheel. Click any swatch to go there.')}</p>
+ <div class="harm">${harms.map(([k,e,ds])=>`<div><div class="h-name">${k} ${L==='ko'?`<span>${e}</span>`:''}</div><div class="row">${ds.map(d=>sw(rot(d))).join('')}</div></div>`).join('')}</div>
+ <h2>${t('밝게 · 어둡게','Tints & Shades')}</h2>
+ <div class="scale">${tints.map(h=>sw(h)).join('')}${sw(hx,true)}${shades.map(h=>sw(h)).join('')}</div>
+ <h2>${t('접근성','Accessibility')}</h2>
+ <div class="two">
+  <div class="panel"><h3>${t('글자 대비','Text contrast')} <span style="font-weight:400;color:var(--sub);font-size:13px">WCAG 2.x</span></h3><div class="contrast">
+   <div style="background:#${hx};color:#fff"><b>${t('흰 글씨','White text')} ${f(cw,2)}:1</b><div style="margin-top:6px">${bd(cw)}</div></div>
+   <div style="background:#${hx};color:#000"><b>${t('검은 글씨','Black text')} ${f(cbk,2)}:1</b><div style="margin-top:6px">${bd(cbk)}</div></div></div>
+   <p style="font-size:12.5px;color:var(--sub);margin:10px 0 0">${t('본문 글자는 4.5:1(AA) 이상, 큰 제목은 3:1 이상을 권장합니다.','Body text should reach 4.5:1 (AA); large headings 3:1.')}</p></div>
+  <div class="panel"><h3>${t('색각 이상 시뮬레이션','Color-vision simulation')}</h3><div class="cb">
+   <div><i style="background:#${hx}"></i>${t('일반 시각','Typical vision')}</div>
+   <div><i style="background:#${simCB(rgb,CB.prot)}"></i>${t('적색맹<br>(1형)','Protanopia')}</div>
+   <div><i style="background:#${simCB(rgb,CB.deut)}"></i>${t('녹색맹<br>(2형)','Deuteranopia')}</div>
+   <div><i style="background:#${simCB(rgb,CB.trit)}"></i>${t('청색맹<br>(3형)','Tritanopia')}</div></div></div>
+ </div>
+ <h2>${t('이 색 활용하기','Use This Color')}</h2>
+ <div class="panel use"><button class="btn" id="to-outfit">${t('이 색 상의로 코디해 보기','Try it as a top')}</button><button class="btn ghost" id="to-coat">${t('코트 색으로 코디해 보기','Try it as a coat')}</button><button class="btn ghost" id="to-chart">${t('이 색으로 차트 팔레트 만들기','Build a chart palette from it')}</button>
+  <p>${(()=>{const sf=seasonFit(lab);return sf.d<12?t(`퍼스널 컬러로는 <b>${SEASONS[sf.k].n}</b> 팔레트의 ‘${sf.c[0]}’${(c=>{const k=c.charCodeAt(c.length-1)-0xAC00;return k>=0&&k<11172&&k%28?'과':'와'})(sf.c[0])} 가까운 색이에요 (ΔE ${sf.d.toFixed(1)}).`,`In personal-color terms, it is close to “${sf.c[1]}” in the <b>${SEASONS[sf.k].e}</b> palette (ΔE ${sf.d.toFixed(1)}).`):t('특정 계절 팔레트에 뚜렷이 속하지 않는 색이에요.','This color doesn’t clearly belong to any one seasonal palette.')})()} <a href="#personal">${t('퍼스널 컬러 알아보기 →','Explore personal color →')}</a></p></div>
+ <div style="display:flex;gap:8px;margin-top:28px;flex-wrap:wrap">
+  <a class="btn ghost" href="${link(P(prev))}" style="text-decoration:none">← #${P(prev).toUpperCase()}</a>
+  <a class="btn ghost" href="${link(P(next))}" style="text-decoration:none">#${P(next).toUpperCase()} →</a>
+  <span style="color:var(--sub);font-size:13px;align-self:center">${t(`16,777,216개 색 중 ${(parseInt(hx,16)+1).toLocaleString()}번째`,`Color ${(parseInt(hx,16)+1).toLocaleString('en-US')} of 16,777,216`)}</span>
+ </div>`;
+ $('#rnd2').onclick=()=>location.hash='c-'+randHex();
+ $('#to-outfit').onclick=()=>{OUT.top=hx;OUT.slot='top';location.hash='outfit'};
+ $('#to-coat').onclick=()=>{OUT.coat=hx;OUT.coatOn=true;OUT.slot='top';location.hash='outfit'};
+ $('#to-chart').onclick=()=>{CH.base=hx;if(CH.type==='cat'&&CH.style!=='focus')CH.style='auto';location.hash='chart'};
+}
+
+/* ================= COLOR MATCH: SHARED ================= */
+function labToLin([L,a,b]){const fy=(L+16)/116,fx=fy+a/500,fz=fy-b/200,e=216/24389,k=24389/27;
+ const xr=fx**3>e?fx**3:(116*fx-16)/k,yr=L>k*e?fy**3:L/k,zr=fz**3>e?fz**3:(116*fz-16)/k;
+ const X=xr*.95047,Y=yr,Z=zr*1.08883;
+ return[3.2404542*X-1.5371385*Y-.4985314*Z,-.969266*X+1.8760108*Y+.041556*Z,.0556434*X-.2040259*Y+1.0572252*Z]}
+const inG=v=>v.every(x=>x>=-.0005&&x<=1.0005);
+const linHex=v=>rgbToHex(...v.map(x=>delin(clamp(x,0,1))));
+function lchHex(L,C,h,strict){let c=C;for(let i=0;i<60;i++){const v=labToLin([L,c*Math.cos(h*Math.PI/180),c*Math.sin(h*Math.PI/180)]);if(inG(v))return linHex(v);if(strict)return null;c=c*.92-.2;if(c<=0)c=0}return linHex(labToLin([L,0,0]))}
+const hd=(a,b)=>{const d=Math.abs(a-b)%360;return d>180?360-d:d};
+const info=hx=>{const rgb=hexToRgb(hx),lab=rgbToLab(...rgb),lch=labToLch(lab);return{hx,rgb,lab,lch,L:lab[0],C:lch[1],H:lch[2]}};
+const grayHex=rgb=>{const v=delin(lum(...rgb));return rgbToHex(v,v,v)};
+const subTabs=cur=>`<div class="subtabs">${[['outfit',t('코디 매칭','Outfit Match')],['personal',t('퍼스널 컬러','Personal Color')],['chart',t('차트 팔레트','Chart Palette')]].map(([r,l])=>`<a href="#${r}" class="${r===cur?'on':''}">${l}</a>`).join('')}</div>`;
+const matchHead=cur=>`<h1 class="serif" style="font-size:34px;margin:0 0 4px">${t('어울리는 색','Color Match')}</h1>
+ <p class="lead">${t('옷 코디, 퍼스널 컬러, 그래프 색까지 — 함께 쓰기 좋은 색을 찾아 드립니다.','Outfits, personal color and chart colors — find colors that work together.')}</p>${subTabs(cur)}`;
+
+/* ================= OUTFIT ================= */
+const GARM=[['흰색','White','f7f7f2',1],['아이보리','Ivory','f1ead8',1],['크림','Cream','eadbb8',1],['베이지','Beige','d6bf9a',1],['카멜','Camel','b5834f',1],['브라운','Brown','6b4a32',1],['카키','Khaki','857f55',1],['라이트 그레이','Light Gray','c9c9c6',1],['그레이','Gray','8e8e8c',1],['차콜','Charcoal','3e4144',1],['블랙','Black','1b1b1d',1],['네이비','Navy','1e2943',1],['데님','Denim','3f5d86',1],['연청','Light Denim','93aecb',1],
+ ['올리브','Olive','5c6136',0],['스카이 블루','Sky Blue','a8c8e6',0],['코발트','Cobalt','2e54a8',0],['버건디','Burgundy','6b1e2c',0],['레드','Red','b5262f',0],['테라코타','Terracotta','b8603f',0],['머스터드','Mustard','c9a23c',0],['버터 옐로','Butter Yellow','f1de95',0],['코랄','Coral','ec8a73',0],['핑크','Pink','e8b3bd',0],['라벤더','Lavender','b7a6d2',0],['퍼플','Purple','5d3a7e',0],['민트','Mint','a9d6c3',0],['세이지','Sage','9daa8a',0],['포레스트 그린','Forest Green','2f5341',0],['오렌지','Orange','e07b2e',0]]
+ .map(([n,e,h,b])=>({n,e,hx:h,basic:!!b,...info(h)}));
+const gName=hx=>{const g=GARM.find(g=>g.hx===hx);if(g)return t(g.n,g.e);const near=GARM.map(g=>({g,d:de2000(info(hx).lab,g.lab)})).sort((a,b)=>a.d-b.d)[0];return (near.d<8?'≈ '+t(near.g.n,near.g.e):'#'+hx.toUpperCase())};
+const isBasicHx=hx=>{const g=GARM.find(g=>g.hx===hx);return g?g.basic:info(hx).C<12};
+const SLOTS=[['coat','코트·아우터','Coat'],['top','상의·이너','Top'],['bottom','하의','Bottom'],['shoes','신발','Shoes']];
+const slotName=k=>{const s=SLOTS.find(s=>s[0]===k);return t(s[1],s[2])};
+let OUT={coatOn:true,coat:'b5834f',top:'eadbb8',bottom:'3f5d86',shoes:'f7f7f2',slot:'top'};
+const PRESETS=[
+ [t('카멜 코트 클래식','Camel coat classic'),{coatOn:true,coat:'b5834f',top:'eadbb8',bottom:'3f5d86',shoes:'f7f7f2'}],
+ [t('차콜 오피스','Charcoal office'),{coatOn:true,coat:'3e4144',top:'f7f7f2',bottom:'1e2943',shoes:'1b1b1d'}],
+ [t('올블랙 + 포인트','All black + accent'),{coatOn:true,coat:'1b1b1d',top:'6b1e2c',bottom:'1b1b1d',shoes:'1b1b1d'}],
+ [t('어스 톤','Earth tones'),{coatOn:true,coat:'857f55',top:'d6bf9a',bottom:'6b4a32',shoes:'6b4a32'}],
+ [t('봄 파스텔','Spring pastel'),{coatOn:false,coat:'f1ead8',top:'b7a6d2',bottom:'f1ead8',shoes:'f7f7f2'}],
+ [t('톤온톤 블루','Tone-on-tone blue'),{coatOn:false,coat:'1e2943',top:'a8c8e6',bottom:'1e2943',shoes:'f7f7f2'}]];
+
+function figure(o){
+ const skin='#E2D5C7',base='stroke="rgba(0,0,0,.22)" stroke-width="1"';
+ const s=k=>o.slot===k?'stroke="#111" stroke-width="2.4" stroke-dasharray="5 3"':base;
+ const m=d=>d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g,(_,x,y)=>`${200-x} ${y}`);
+ const P=(slot,d,fill)=>`<path data-slot="${slot}" d="${d}" fill="#${fill}" ${s(slot)}/><path data-slot="${slot}" d="${m(d)}" fill="#${fill}" ${s(slot)}/>`;
+ return `<svg viewBox="0 0 200 380" class="fig" role="img" aria-label="outfit preview">
+ <circle cx="100" cy="36" r="21" fill="${skin}"/><rect x="92" y="52" width="16" height="18" fill="${skin}"/>
+ <circle cx="39" cy="216" r="7.5" fill="${skin}"/><circle cx="161" cy="216" r="7.5" fill="${skin}"/>
+ <path data-slot="bottom" d="M58 188 H142 L140 352 H106 L100 238 L94 352 H60 Z" fill="#${o.bottom}" ${s('bottom')}/>
+ ${P('top','M68 68 L40 84 L32 206 L48 208 L58 112 Z',o.top)}
+ <path data-slot="top" d="M68 68 H132 L146 196 H54 Z" fill="#${o.top}" ${s('top')}/>
+ ${o.coatOn?P('coat','M66 66 L95 70 L91 300 L46 300 L54 92 Z',o.coat)+P('coat','M64 68 L40 84 L31 208 L48 210 L58 110 Z',o.coat):''}
+ <path data-slot="shoes" d="M60 352 H95 L97 366 H52 Q51 355 60 352 Z" fill="#${o.shoes}" ${s('shoes')}/>
+ <path data-slot="shoes" d="M105 352 H140 Q149 355 148 366 H103 Z" fill="#${o.shoes}" ${s('shoes')}/>
+ </svg>`}
+
+function outfitRecs(){
+ const o=OUT,slot=o.slot;
+ const nb={coat:['top','bottom'],top:o.coatOn?['coat','bottom']:['bottom'],bottom:['top',...(o.coatOn?['coat']:[])],shoes:['bottom',...(o.coatOn?['coat']:['top'])]}[slot];
+ const main=info(o[nb[0]]),others=nb.map(k=>info(o[k]));
+ const mainNeutral=isBasicHx(main.hx)||main.C<12;
+ const g={safe:[],refined:[],accent:[]};
+ GARM.forEach(c=>{
+  if(others.some(x=>de2000(x.lab,c.lab)<7))return;
+  const dL=Math.abs(c.L-main.L),dh=hd(c.H,main.H),dC=Math.abs(c.C-main.C);
+  if(c.basic){if(dL>=12)g.safe.push(c);return}
+  if(mainNeutral){(c.C>45?g.accent:g.refined).push(c);return}
+  if(dh<22&&dL>=16)g.safe.push(c);
+  else if(dL<=18&&dC<=22&&dh>=25&&dh<=115)g.refined.push(c);
+  else if(dh>=115&&c.C<=62)g.accent.push(c);
+ });
+ g.safe.sort((a,b)=>Math.abs(b.L-main.L)-Math.abs(a.L-main.L));
+ return{g,main,nb};
+}
+function outfitComments(){
+ const o=OUT,pcs=['top','bottom','shoes',...(o.coatOn?['coat']:[])].map(k=>({k,...info(o[k])}));
+ const chrom=[];pcs.filter(p=>!isBasicHx(p.hx)&&p.C>=12).forEach(p=>{if(!chrom.some(c=>hd(c.H,p.H)<25))chrom.push(p)});
+ const out=[];
+ if(chrom.length===0)out.push(['ok',t('베이직 컬러만으로 구성된 미니멀 코디예요. 포인트를 주고 싶다면 이너나 신발 하나에 유채색을 더해 보세요.','A minimal outfit of basic colors only. For a lift, add one colored piece — the inner top or shoes.')]);
+ else if(chrom.length===1)out.push(['ok',t('베이직 컬러 + 포인트 1색 — 가장 실패 없는 공식이에요.','Basics plus one accent color — the most reliable formula.')]);
+ else if(chrom.length===2)out.push(['mid',t('유채색이 두 가지예요. 두 색의 밝기·선명도(톤)를 비슷하게 맞추면 세련돼 보여요.','Two accent colors. Keep their lightness and saturation similar for a polished look.')]);
+ else out.push(['warn',t('유채색이 세 가지 이상이에요. 하나를 무채색이나 베이직 컬러로 바꾸면 훨씬 정돈돼 보여요.','Three or more accent colors. Swapping one for a basic color will look more put-together.')]);
+ const T=info(o.top),B=info(o.bottom);
+ if(de2000(T.lab,B.lab)<4)out.push(['ok',t('상·하의가 같은 색인 셋업 코디예요. 신발이나 아우터로 대비를 주면 좋아요.','A matching top-and-bottom set. Add contrast with shoes or outerwear.')]);
+ else if(Math.abs(T.L-B.L)<10&&de2000(T.lab,B.lab)<14)out.push(['warn',t('상의와 하의가 비슷하지만 같지는 않아 경계가 흐려 보일 수 있어요. 밝기 차이를 더 주거나 아예 같은 색으로 맞춰 보세요.','Top and bottom are similar but not identical, which can look muddy. Increase the lightness gap or match them exactly.')]);
+ else out.push(['ok',t('상의와 하의의 밝기 차이가 충분해 실루엣이 또렷해요.','Enough lightness contrast between top and bottom for a crisp silhouette.')]);
+ if(o.coatOn){const C=info(o.coat);if(C.L<40&&T.L<40)out.push(['mid',t('코트와 이너가 모두 어두워 얼굴 주변이 무거워 보일 수 있어요. 밝은 이너가 얼굴을 환하게 해 줘요.','Coat and inner are both dark, which can feel heavy near the face. A light inner brightens it.')]);
+  else if(Math.abs(C.L-T.L)>=20)out.push(['ok',t('코트와 이너의 명암 대비가 좋아 얼굴 쪽에 시선이 모여요.','Good contrast between coat and inner draws the eye to the face.')]);}
+ const S=info(o.shoes);
+ if(de2000(S.lab,B.lab)<10)out.push(['ok',t('신발을 하의 색과 이어 다리가 길어 보이는 효과가 있어요.','Shoes continue the bottom color, visually lengthening the legs.')]);
+ else if(o.coatOn&&de2000(S.lab,info(o.coat).lab)<10)out.push(['ok',t('신발과 코트 색이 서로 받쳐 주어 전체가 통일돼 보여요.','Shoes echo the coat color, tying the look together.')]);
+ return out;
+}
+function viewOutfit(){
+ const o=OUT;const {g,main,nb}=outfitRecs();
+ const sw=c=>`<button class="gsw ${o[o.slot]===c.hx?'on':''}" data-hx="${c.hx}" title="${esc(t(c.n,c.e))}"><i style="background:#${c.hx}"></i><span>${esc(t(c.n,c.e))}</span></button>`;
+ const grp=(k,title,why)=>`<div class="rec"><div class="rec-h"><b>${title}</b><span>${why}</span></div><div class="gsws">${g[k].slice(0,8).map(sw).join('')||`<span class="muted">${t('이 조합에서는 추천할 색이 없어요','No suggestions for this combination')}</span>`}</div></div>`;
+ app.innerHTML=`${matchHead('outfit')}
+ <div class="outfit">
+  <div class="fig-col">
+   <div class="fig-wrap" id="figwrap">${figure(o)}</div>
+   <div class="slotbtns">${SLOTS.map(([k])=>`<button data-slot="${k}" class="${o.slot===k?'on':''} ${k==='coat'&&!o.coatOn?'off':''}"><i style="background:#${o[k]}"></i>${slotName(k)}<small>${esc(gName(o[k]))}</small></button>`).join('')}</div>
+   <label class="toggle"><input type="checkbox" id="coaton" ${o.coatOn?'checked':''}> ${t('아우터 입기','Wear a coat')}</label>
+   <div class="presets"><div class="kicker" style="margin:14px 0 6px">${t('예시 코디','Example outfits')}</div>${PRESETS.map((p,i)=>`<button data-preset="${i}" class="btn ghost sm">${p[0]}</button>`).join('')}</div>
+  </div>
+  <div>
+   <div class="panel">
+    <h3>${t(`${slotName(o.slot)} 색 고르기`,`Choose ${slotName(o.slot).toLowerCase()} color`)} <input type="color" class="picker sm" id="gpick" value="#${o[o.slot]}" title="${t('직접 고르기','Custom')}"></h3>
+    <div class="gsws all">${GARM.map(sw).join('')}</div>
+   </div>
+   <div class="panel" style="margin-top:16px">
+    <h3>${t(`${slotName(o.slot)} 추천`,`Suggested ${slotName(o.slot).toLowerCase()} colors`)} <span class="muted" style="font-weight:400;font-size:13px">${t(`기준: ${slotName(nb[0])} ${gName(main.hx)}`,`Based on: ${slotName(nb[0])} ${gName(main.hx)}`)}</span></h3>
+    ${grp('safe',t('실패 없는 조합','Safe'),t('베이직 컬러나 같은 색 계열의 진하기 차이(톤온톤)','Basic colors, or the same hue in a different depth (tone-on-tone)'))}
+    ${grp('refined',t('세련된 조합','Refined'),t('밝기·선명도가 비슷한 다른 색(톤인톤)','Different hues with similar lightness and saturation (tone-in-tone)'))}
+    ${grp('accent',t('포인트 조합','Accent'),t('반대쪽 색을 차분하게 — 작은 면적에 쓰면 좋아요','Opposite hues, softened — best in small doses'))}
+   </div>
+   <div class="panel" style="margin-top:16px"><h3>${t('코디 한 줄 평','Outfit notes')}</h3><ul class="notes">${outfitComments().map(([k,s])=>`<li class="n-${k}">${s}</li>`).join('')}</ul>
+    <p class="muted" style="font-size:12.5px;margin:10px 0 0">${t('색 조합 원리에 따른 제안이에요. 소재·질감·체형에 따라 느낌이 달라질 수 있어요.','Suggestions follow color-harmony principles; fabric, texture and fit change the effect.')}</p></div>
+  </div>
+ </div>`;
+ const set=hx=>{OUT[OUT.slot]=hx;if(OUT.slot==='coat')OUT.coatOn=true;viewOutfit()};
+ app.querySelectorAll('[data-slot]').forEach(el=>el.addEventListener('click',()=>{OUT.slot=el.dataset.slot;if(OUT.slot==='coat')OUT.coatOn=true;viewOutfit()}));
+ app.querySelectorAll('.gsw').forEach(b=>b.onclick=()=>set(b.dataset.hx));
+ $('#gpick').addEventListener('change',e=>set(normHex(e.target.value)));
+ $('#coaton').onchange=e=>{OUT.coatOn=e.target.checked;if(!OUT.coatOn&&OUT.slot==='coat')OUT.slot='top';viewOutfit()};
+ app.querySelectorAll('[data-preset]').forEach(b=>b.onclick=()=>{Object.assign(OUT,PRESETS[+b.dataset.preset][1]);if(!OUT.coatOn&&OUT.slot==='coat')OUT.slot='top';viewOutfit()});
+}
+
+/* ================= PERSONAL COLOR ================= */
+const SEASONS={
+ spring:{n:'봄 웜톤',e:'Spring Warm',d:'밝고 따뜻하며 맑은 색이 잘 어울려요. 생기 있고 화사한 인상을 줍니다.',de:'Light, warm, clear colors suit you, giving a fresh and lively impression.',
+  best:[['코랄','Coral','ff7f6b'],['피치','Peach','ffb38a'],['살구','Apricot','f9c29c'],['골든 옐로','Golden Yellow','f6c744'],['연두','Spring Green','a8d46f'],['아이보리','Ivory','fff4dc'],['라이트 카멜','Light Camel','c89b6d'],['터콰이즈','Turquoise','3cc5b8'],['웜 핑크','Warm Pink','f49a9a'],['토마토 레드','Tomato Red','f2603c'],['클리어 아쿠아','Clear Aqua','7dd3e0'],['라이트 웜 그레이','Light Warm Gray','c8bba8']],
+  avoid:[['블랙','Black','111111'],['쿨 그레이','Cool Gray','8a8f99'],['버건디','Burgundy','5e1a2e'],['블루 블랙','Blue Black','1a2030']]},
+ summer:{n:'여름 쿨톤',e:'Summer Cool',d:'부드럽고 차가운 파스텔·회색빛 색이 잘 어울려요. 맑고 우아한 인상을 줍니다.',de:'Soft, cool pastels and grayed tones suit you, giving a clean and graceful impression.',
+  best:[['라벤더','Lavender','b9a7d9'],['파우더 블루','Powder Blue','a7c4e5'],['로즈 핑크','Rose Pink','e8a0b4'],['스카이 블루','Sky Blue','9cc9e8'],['소프트 민트','Soft Mint','a8d8c8'],['라이트 그레이','Light Gray','c9ccd3'],['모브','Mauve','b48ba8'],['라즈베리','Raspberry','c2557a'],['쿨 네이비','Cool Navy','3b4b73'],['더스티 블루','Dusty Blue','6e8aa8'],['로즈 브라운','Rose Brown','9e6f73'],['소프트 화이트','Soft White','f5f5f7']],
+  avoid:[['오렌지','Orange','f07a1a'],['머스터드','Mustard','c9a13b'],['카멜','Camel','b9864e'],['블랙','Black','111111']]},
+ autumn:{n:'가을 웜톤',e:'Autumn Warm',d:'깊고 따뜻하며 차분한 색이 잘 어울려요. 성숙하고 고급스러운 인상을 줍니다.',de:'Deep, warm, muted colors suit you, giving a mature and refined impression.',
+  best:[['머스터드','Mustard','c9a13b'],['테라코타','Terracotta','c0623e'],['카키','Khaki','8a8456'],['올리브','Olive','6b6b2e'],['브릭','Brick','9c3b2a'],['카멜','Camel','b9864e'],['초콜릿','Chocolate','5c3a21'],['딥 틸','Deep Teal','1f5f5b'],['웜 버건디','Warm Burgundy','7a2e2e'],['앤틱 골드','Antique Gold','b8892e'],['베이지','Beige','d9c3a0'],['다크 그린','Dark Green','2f4a33']],
+  avoid:[['핫 핑크','Hot Pink','ff4fa0'],['아이스 블루','Ice Blue','d6e8f5'],['퓨어 화이트','Pure White','ffffff'],['라벤더','Lavender','c3b1e1']]},
+ winter:{n:'겨울 쿨톤',e:'Winter Cool',d:'선명하고 차가우며 대비가 강한 색이 잘 어울려요. 또렷하고 세련된 인상을 줍니다.',de:'Vivid, cool, high-contrast colors suit you, giving a sharp and striking impression.',
+  best:[['퓨어 화이트','Pure White','ffffff'],['블랙','Black','111111'],['로열 블루','Royal Blue','2346b8'],['와인','Wine','6e1f3a'],['푸크시아','Fuchsia','d0287a'],['에메랄드','Emerald','009b77'],['아이시 핑크','Icy Pink','f4d6e4'],['차콜','Charcoal','36383d'],['트루 레드','True Red','c8102e'],['딥 네이비','Deep Navy','14213d'],['아이스 블루','Ice Blue','d6e8f5'],['딥 퍼플','Deep Purple','5b2a86']],
+  avoid:[['베이지','Beige','d9c3a0'],['카멜','Camel','b9864e'],['오렌지','Orange','f07a1a'],['머스터드','Mustard','c9a13b']]}};
+const SEASON_ORDER=['spring','summer','autumn','winter'];
+const QUIZ=[
+ {q:['손목 안쪽 혈관은 어떤 색으로 보이나요?','What color do the veins on your inner wrist look?'],a:[[['초록빛','Greenish'],{w:2}],[['파랗거나 보랏빛','Blue or purple'],{w:-2}],[['잘 모르겠다','Not sure'],{}]]},
+ {q:['어떤 액세서리가 더 잘 어울리나요?','Which jewelry suits you better?'],a:[[['골드','Gold'],{w:2}],[['실버','Silver'],{w:-2}],[['둘 다 비슷하다','Both'],{}]]},
+ {q:['햇볕을 쬐면 피부는?','In the sun, your skin…'],a:[[['금방 갈색으로 탄다','Tans easily'],{w:1}],[['붉어지고 잘 안 탄다','Turns red, rarely tans'],{w:-1}]]},
+ {q:['얼굴 옆에 대 보면 더 나은 쪽은?','Held near your face, which looks better?'],a:[[['아이보리·크림','Ivory or cream'],{w:1}],[['새하얀 흰색','Pure white'],{w:-1}]]},
+ {q:['머리카락·눈동자와 피부의 대비는?','Contrast between your hair/eyes and skin?'],a:[[['부드럽고 연한 편','Soft and light'],{d:-2}],[['또렷하고 진한 편','Strong and deep'],{d:2}]]},
+ {q:['칭찬을 더 많이 듣는 옷 색은?','Which colors get you more compliments?'],a:[[['밝고 화사한 색','Light, bright colors'],{d:-1}],[['깊고 진한 색','Deep, rich colors'],{d:1}]]}];
+let PC={ans:{},season:null,photo:null};
+function pcResult(){let w=0,d=0;QUIZ.forEach((q,i)=>{const a=PC.ans[i];if(a!=null){const s=q.a[a][1];w+=s.w||0;d+=s.d||0}});return w>=0?(d>0?'autumn':'spring'):(d>0?'winter':'summer')}
+function viewPersonal(){
+ const done=Object.keys(PC.ans).length===QUIZ.length;
+ const se=PC.season;const S=se&&SEASONS[se];
+ const face=PC.photo?`<img src="${PC.photo}" alt="">`:`<svg viewBox="0 0 100 100"><circle cx="50" cy="40" r="22" fill="#E2D5C7"/><path d="M14 100 Q50 58 86 100 Z" fill="#E2D5C7"/></svg>`;
+ const drape=(c,bad)=>`<div class="drape ${bad?'bad':''}" style="background:#${c[2]}"><div class="face">${face}</div><span style="color:${textOn(hexToRgb(c[2]))}">${bad?'✕ ':''}${esc(t(c[0],c[1]))}</span></div>`;
+ app.innerHTML=`${matchHead('personal')}
+ <div class="two pc">
+  <div class="panel"><h3>${t('간단 자가진단','Quick self-check')}</h3>
+   ${QUIZ.map((q,i)=>`<div class="qz"><b>${i+1}. ${t(q.q[0],q.q[1])}</b><div>${q.a.map((a,j)=>`<button data-q="${i}" data-a="${j}" class="${PC.ans[i]===j?'on':''}">${t(a[0][0],a[0][1])}</button>`).join('')}</div></div>`).join('')}
+   <button class="btn" id="pcgo" ${done?'':'disabled'} style="margin-top:8px">${done?t('결과 보기','See result'):t(`${QUIZ.length-Object.keys(PC.ans).length}문항 남음`,`${QUIZ.length-Object.keys(PC.ans).length} left`)}</button>
+  </div>
+  <div class="panel"><h3>${t('사진으로 비교하기','Compare with a photo')}</h3>
+   <p class="muted" style="margin:0 0 10px;font-size:14px">${t('얼굴 사진을 올리면 여러 색 천을 두른 것처럼 비교할 수 있어요. 사진은 이 브라우저 안에서만 쓰이고 어디에도 저장·전송되지 않습니다.','Upload a face photo to compare it against colored drapes. The photo stays in this browser and is never stored or sent anywhere.')}</p>
+   <label class="btn ghost" style="display:inline-block">${PC.photo?t('다른 사진 고르기','Choose another photo'):t('사진 고르기','Choose photo')}<input type="file" accept="image/*" id="pcfile" hidden></label>
+   ${PC.photo?`<button class="btn ghost" id="pcclear" style="margin-left:6px">${t('사진 지우기','Remove photo')}</button>`:''}
+   <p class="muted" style="font-size:12.5px;margin:12px 0 0">${t('자연광 아래, 화장을 하지 않은 정면 사진일수록 비교가 정확해요.','Natural light and a bare, front-facing photo give the best comparison.')}</p>
+  </div>
+ </div>
+ <div class="seasontabs">${SEASON_ORDER.map(k=>`<button data-season="${k}" class="${se===k?'on':''}"><span class="strip">${SEASONS[k].best.slice(0,6).map(c=>`<i style="background:#${c[2]}"></i>`).join('')}</span>${t(SEASONS[k].n,SEASONS[k].e)}</button>`).join('')}</div>
+ ${S?`<div class="panel pc-res">
+   <div class="kicker">${done&&pcResult()===se?t('자가진단 결과','Your result'):t('팔레트 보기','Palette')}</div>
+   <h2 style="margin:4px 0 6px">${t(S.n,S.e)}</h2><p style="margin:0 0 16px">${t(S.d,S.de)}</p>
+   <div class="kicker" style="margin-bottom:8px">${t('잘 어울리는 색','Best colors')}</div>
+   <div class="drapes">${S.best.map(c=>drape(c)).join('')}</div>
+   <div class="kicker" style="margin:18px 0 8px">${t('피하면 좋은 색','Colors to avoid')}</div>
+   <div class="drapes">${S.avoid.map(c=>drape(c,1)).join('')}</div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:18px">
+    <button class="btn" id="pc2outfit">${t('이 팔레트로 코디해 보기','Try an outfit with this palette')}</button>
+    <button class="btn ghost" id="pc2chart">${t('이 팔레트로 차트 만들기','Make a chart palette')}</button></div>
+  </div>`:`<p class="muted" style="text-align:center;margin:24px 0">${t('자가진단을 마치거나 위에서 계절을 골라 팔레트를 확인하세요.','Finish the self-check or pick a season above to see its palette.')}</p>`}
+ <p class="muted" style="font-size:12.5px;margin-top:18px">${t('※ 퍼스널 컬러는 의학적 진단이 아니라 스타일링 참고용입니다. 조명과 화면에 따라 색이 다르게 보일 수 있고, 어떤 피부색에도 좋고 나쁨은 없습니다. 좋아하는 색을 입는 것이 가장 중요해요.','※ Personal color is a styling guide, not a diagnosis. Lighting and screens change how colors look, and no skin tone is better than another. Wearing colors you love matters most.')}</p>`;
+ app.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{PC.ans[+b.dataset.q]=+b.dataset.a;viewPersonal()});
+ const go=$('#pcgo');if(go)go.onclick=()=>{PC.season=pcResult();viewPersonal();setTimeout(()=>document.querySelector('.pc-res')?.scrollIntoView({behavior:'smooth',block:'start'}),50)};
+ app.querySelectorAll('[data-season]').forEach(b=>b.onclick=()=>{PC.season=b.dataset.season;viewPersonal()});
+ $('#pcfile').onchange=e=>{const f=e.target.files[0];if(!f)return;if(PC.photo)URL.revokeObjectURL(PC.photo);PC.photo=URL.createObjectURL(f);viewPersonal()};
+ const cl=$('#pcclear');if(cl)cl.onclick=()=>{URL.revokeObjectURL(PC.photo);PC.photo=null;viewPersonal()};
+ if(S){$('#pc2outfit').onclick=()=>{const b=S.best;Object.assign(OUT,{coatOn:true,coat:b[5][2],top:b[0][2],bottom:se==='spring'||se==='summer'?'f1ead8':'1e2943',shoes:'f7f7f2',slot:'top'});if(se==='autumn')Object.assign(OUT,{coat:'b5834f',bottom:'6b4a32',shoes:'6b4a32'});if(se==='winter')Object.assign(OUT,{coat:'1b1b1d',bottom:'1b1b1d',shoes:'1b1b1d',top:'2346b8'});location.hash='outfit'};
+  $('#pc2chart').onclick=()=>{CH.type='cat';CH.style='custom';CH.custom=S.best.filter(c=>{const i=info(c[2]);return i.L<85&&i.L>25}).map(c=>c[2]);CH.base=CH.custom[0];location.hash='chart'}}
+}
+function seasonFit(lab){let best=null;SEASON_ORDER.forEach(k=>SEASONS[k].best.forEach(c=>{const d=de2000(lab,info(c[2]).lab);if(!best||d<best.d)best={k,c,d}}));return best}
+
+/* ================= CHART PALETTE ================= */
+let CH={type:'cat',style:'auto',n:6,base:'2463a6',base2:null,bg:'light',sim:'none',custom:null};
+const OKABE=['e69f00','56b4e9','009e73','f0e442','0072b2','d55e00','cc79a7','000000'];
+let POOL=null;
+function pool(){if(POOL)return POOL;POOL=[];for(const L of [36,44,52,60,68,76])for(const C of [32,46,60,74])for(let h=0;h<360;h+=10){const hx=lchHex(L,C,h,true);if(hx){const rgb=hexToRgb(hx);POOL.push({hx,rgb,lab:rgbToLab(...rgb),d:rgbToLab(...hexToRgb(simCB(rgb,CB.deut))),p:rgbToLab(...hexToRgb(simCB(rgb,CB.prot)))})}}return POOL}
+function chartPalette(){
+ const n=CH.n,bgRgb=CH.bg==='dark'?[27,27,29]:[255,255,255],B=info(CH.base);
+ if(CH.type==='cat'){
+  if(CH.style==='okabe')return OKABE.map(h=>CH.bg==='dark'&&h==='000000'?'f2f2f2':h).slice(0,n);
+  if(CH.style==='custom'&&CH.custom)return CH.custom.slice(0,n);
+  if(CH.style==='focus'){const out=[CH.base];for(let i=1;i<n;i++){const L=CH.bg==='dark'?28+45*(i-1)/Math.max(1,n-2):35+45*(i-1)/Math.max(1,n-2);out.push(lchHex(L,2,250))}return out}
+  const P=pool().filter(c=>contrast(c.rgb,bgRgb)>=1.7);
+  const chosen=[{hx:CH.base,rgb:B.rgb,lab:B.lab,d:rgbToLab(...hexToRgb(simCB(B.rgb,CB.deut))),p:rgbToLab(...hexToRgb(simCB(B.rgb,CB.prot)))}];
+  const dist=(a,b)=>Math.min(de2000(a.lab,b.lab),de2000(a.d,b.d)*1.15,de2000(a.p,b.p)*1.15);
+  while(chosen.length<n){let best=null,bs=-1;for(const c of P){let m=Infinity;for(const s of chosen){const v=dist(c,s);if(v<m)m=v;if(m<bs)break}if(m>bs){bs=m;best=c}}chosen.push(best)}
+  return chosen.map(c=>c.hx)}
+ const dark=CH.bg==='dark';
+ const ramp=(info_,k,m)=>{const Lhi=dark?22:95,Llo=dark?88:28;const L=Lhi+(Llo-Lhi)*k;const C=info_.C*(0.12+0.88*Math.sin(Math.PI/2*Math.min(1,k*1.15)))*(m||1);return lchHex(L,C,info_.H+(1-k)*-8)};
+ if(CH.type==='seq'){if(n===1)return[CH.base];return Array.from({length:n},(_,i)=>ramp(B,(i+0.4)/(n-0.6)))}
+ let h2=(B.H+180)%360;if(h2>75&&h2<140)h2=40;const B2=info(CH.base2||lchHex(B.L,B.C,h2));
+ const half=Math.floor(n/2),out=[];
+ for(let i=0;i<half;i++)out.push(ramp(B,1-i/(half)*(n%2?1:0.88)));
+ if(n%2)out.push(dark?'3a3a3c':'eeeeec');
+ for(let i=half-1;i>=0;i--)out.push(ramp(B2,1-i/(half)*(n%2?1:0.88)));
+ return out}
+function simList(pal,mode){return pal.map(h=>{const r=hexToRgb(h);return mode==='prot'?simCB(r,CB.prot):mode==='deut'?simCB(r,CB.deut):mode==='trit'?simCB(r,CB.trit):mode==='gray'?grayHex(r):h})}
+function chartChecks(pal){
+ const bgRgb=CH.bg==='dark'?[27,27,29]:[255,255,255];
+ const pairs=[];if(CH.type==='cat'){for(let i=0;i<pal.length;i++)for(let j=i+1;j<pal.length;j++)pairs.push([i,j])}else for(let i=0;i+1<pal.length;i++)pairs.push([i,i+1]);
+ const minBy=fn=>{let m=null;pairs.forEach(([i,j])=>{const v=fn(pal[i],pal[j]);if(!m||v<m.v)m={v,i,j}});return m||{v:0,i:0,j:0}};
+ const L=h=>rgbToLab(...hexToRgb(h));
+ const deIn=mode=>(a,b)=>de2000(L(simList([a],mode)[0]),L(simList([b],mode)[0]));
+ const rows=[[t('일반 시각','Typical vision'),minBy(deIn('none')),'de','none'],[t('적색맹(1형)','Protanopia'),minBy(deIn('prot')),'de','prot'],[t('녹색맹(2형)','Deuteranopia'),minBy(deIn('deut')),'de','deut'],[t('청색맹(3형)','Tritanopia'),minBy(deIn('trit')),'de','trit'],[t('흑백 인쇄','Grayscale print'),(()=>{const keep=pairs.slice();if(CH.type==='div'&&pal.length%2===0){const k=pal.length/2-1;const ix=pairs.findIndex(([i,j])=>i===k&&j===k+1);if(ix>=0)pairs.splice(ix,1)}const r=minBy((a,b)=>Math.abs(L(a)[0]-L(b)[0]));pairs.length=0;keep.forEach(x=>pairs.push(x));return r})(),'gl','gray']];
+ const cmin=Math.min(...pal.map(h=>contrast(hexToRgb(h),bgRgb)));
+ return{rows,cmin}}
+function grade(v,kind){const ord=CH.type!=='cat';if(kind==='gl')return v>=(ord?7:10)?'ok':v>=(ord?4:5)?'mid':'warn';if(kind==='c')return v>=3?'ok':v>=2?'mid':'warn';return v>=(ord?10:20)?'ok':v>=(ord?5:10)?'mid':'warn'}
+const gradeTxt=k=>({ok:t('좋음','Good'),mid:t('보통','Fair'),warn:t('주의','Low')}[k]);
+function chartSVG(pal){
+ const n=pal.length,bg=CH.bg==='dark'?'#1B1B1D':'#FFFFFF',fg=CH.bg==='dark'?'#BBB':'#666',grid=CH.bg==='dark'?'#333':'#EEE';
+ const val=(i,j)=>8+((i*37+j*53+11)%23);
+ let a='',b='',c='';
+ if(CH.type==='cat'){
+  const cats=['2022','2023','2024','2025','2026'];const tot=cats.map((_,j)=>pal.reduce((s,_,i)=>s+val(i,j),0));const mx=Math.max(...tot);
+  a=cats.map((cname,j)=>{let y=200;return pal.map((h,i)=>{const hh=val(i,j)/mx*170;y-=hh;return `<rect x="${30+j*62}" y="${y}" width="40" height="${hh}" fill="#${h}" stroke="${bg}" stroke-width="1"/>`}).join('')+`<text x="${50+j*62}" y="216" fill="${fg}" font-size="10" text-anchor="middle">${cname}</text>`}).join('');
+  a=`<line x1="20" y1="200" x2="340" y2="200" stroke="${grid}"/>`+a;
+  b=pal.map((h,i)=>{const pts=Array.from({length:7},(_,j)=>`${25+j*52},${190-((val(i,j)*3+i*14)%150)}`).join(' ');return `<polyline points="${pts}" fill="none" stroke="#${h}" stroke-width="2.5"/>`+Array.from({length:7},(_,j)=>`<circle cx="${25+j*52}" cy="${190-((val(i,j)*3+i*14)%150)}" r="3" fill="#${h}"/>`).join('')}).join('');
+  b=[50,100,150].map(y=>`<line x1="20" y1="${y}" x2="340" y2="${y}" stroke="${grid}"/>`).join('')+b;
+ }else{
+  const cols=12,rows=6;a=Array.from({length:rows*cols},(_,k)=>{const r=Math.floor(k/cols),cc=k%cols;const v=(Math.sin(cc/2.2+r/1.7)+Math.cos(r/1.3-cc/3.1)+2)/4;const idx=Math.min(n-1,Math.floor(v*n));return `<rect x="${12+cc*28}" y="${12+r*32}" width="27" height="31" fill="#${pal[idx]}"/>`}).join('');
+  b=[0,1,2].map(ri=>{const w=pal.map((_,i)=>1+((i*3+ri*5+ri*i)%4));const tot=w.reduce((s,v)=>s+v,0);let x=20;return pal.map((h,i)=>{const ww=w[i]/tot*320;const r=`<rect x="${x}" y="${30+ri*60}" width="${ww}" height="34" fill="#${h}" stroke="${bg}" stroke-width="1"/>`;x+=ww;return r}).join('')}).join('');
+ }
+ const R=80,cx=100,cy=105,tot=pal.reduce((s,_,i)=>s+val(i,0),0);let ang=-Math.PI/2;
+ c=pal.map((h,i)=>{const fr=val(i,0)/tot,a2=ang+fr*Math.PI*2;const x1=cx+R*Math.cos(ang),y1=cy+R*Math.sin(ang),x2=cx+R*Math.cos(a2),y2=cy+R*Math.sin(a2);const d=`M${cx} ${cy} L${x1} ${y1} A${R} ${R} 0 ${fr>.5?1:0} 1 ${x2} ${y2} Z`;ang=a2;return `<path d="${d}" fill="#${h}" stroke="${bg}" stroke-width="2"/>`}).join('')+`<circle cx="${cx}" cy="${cy}" r="${R*.55}" fill="${bg}"/>`;
+ const box=(inner,w,lbl)=>`<figure class="cbox" style="background:${bg}"><svg viewBox="0 0 ${w} 222">${inner}</svg><figcaption>${lbl}</figcaption></figure>`;
+ return `<div class="cprev">${box(a,360,CH.type==='cat'?t('누적 막대','Stacked bars'):t('히트맵','Heatmap'))}${box(b,360,CH.type==='cat'?t('선 그래프','Line chart'):t('누적 가로 막대','Stacked bars'))}${box(c,200,t('도넛','Donut'))}</div>`}
+function viewChart(){
+ const pal=chartPalette();const view=simList(pal,CH.sim);const {rows,cmin}=chartChecks(pal);
+ const types=[['cat',t('범주형','Categorical'),t('서로 다른 항목 구분','Distinguish categories')],['seq',t('순차형','Sequential'),t('작은 값 → 큰 값','Low → high values')],['div',t('발산형','Diverging'),t('음(−) ↔ 0 ↔ 양(+)','Negative ↔ 0 ↔ positive')]];
+ const styles=[['auto',t('자동 (최대 구별)','Auto (max contrast)')],['okabe',t('Okabe-Ito (색각 이상 안전)','Okabe-Ito (CVD-safe)')],['focus',t('강조형 (1색 + 회색)','Highlight (1 color + grays)')],...(CH.custom?[['custom',t('퍼스널 컬러 팔레트','Personal-color palette')]]:[])];
+ const maxN=CH.type==='cat'&&CH.style==='okabe'?8:CH.type==='cat'&&CH.style==='custom'&&CH.custom?CH.custom.length:10;if(CH.n>maxN)CH.n=maxN;
+ const fmt={hex:pal.map(h=>'#'+h.toUpperCase()).join(', '),lines:pal.map(h=>'#'+h.toUpperCase()).join('\n'),rgb:pal.map(h=>hexToRgb(h).join(', ')).join('\n'),py:'['+pal.map(h=>`"#${h.toUpperCase()}"`).join(', ')+']'};
+ app.innerHTML=`${matchHead('chart')}
+ <div class="chart-layout">
+  <div class="panel ctl">
+   <div class="kicker">${t('팔레트 종류','Palette type')}</div>
+   <div class="seg">${types.map(([k,l,s])=>`<button data-type="${k}" class="${CH.type===k?'on':''}"><b>${l}</b><small>${s}</small></button>`).join('')}</div>
+   ${CH.type==='cat'?`<div class="kicker">${t('방식','Style')}</div><select id="cstyle">${styles.map(([k,l])=>`<option value="${k}" ${CH.style===k?'selected':''}>${l}</option>`).join('')}</select>`:''}
+   <div class="kicker">${t('색 개수','Number of colors')}: <b id="nval">${CH.n}</b></div>
+   <input type="range" id="cn" min="2" max="${maxN}" value="${CH.n}">
+   ${(CH.type!=='cat'||CH.style==='auto'||CH.style==='focus')?`<div class="kicker">${CH.type==='div'?t('왼쪽 기준색','Left color'):t('기준색 (회사 대표색 등)','Base color (e.g. brand color)')}</div>
+   <div class="crow"><input type="color" id="cbase" class="picker" value="#${CH.base}"><input type="text" id="cbaseT" value="#${CH.base.toUpperCase()}" class="tin"></div>`:''}
+   ${CH.type==='div'?`<div class="kicker">${t('오른쪽 기준색','Right color')}</div><div class="crow"><input type="color" id="cbase2" class="picker" value="#${pal[pal.length-1]}"><button class="btn ghost sm" id="cauto2">${t('자동(보색)','Auto (opposite)')}</button></div>`:''}
+   <div class="kicker">${t('배경','Background')}</div>
+   <div class="seg two-s">${[['light',t('흰 배경','Light')],['dark',t('어두운 배경','Dark')]].map(([k,l])=>`<button data-bg="${k}" class="${CH.bg===k?'on':''}">${l}</button>`).join('')}</div>
+  </div>
+  <div>
+   <div class="panel">
+    <div class="palrow">${pal.map((h,i)=>`<button class="pal" data-copy="#${h.toUpperCase()}" style="background:#${h};color:${textOn(hexToRgb(h))}"><span>${i+1}</span>#${h.toUpperCase()}</button>`).join('')}</div>
+    <div class="copyrow"><span class="muted">${t('복사','Copy')}:</span>
+     <button class="copy" data-copy="${esc(fmt.hex)}">${t('HEX 한 줄','HEX list')}</button>
+     <button class="copy" data-copy="${esc(fmt.lines)}">${t('엑셀용 (줄바꿈)','For Excel (lines)')}</button>
+     <button class="copy" data-copy="${esc(fmt.rgb)}">${t('RGB (파워포인트용)','RGB (for PowerPoint)')}</button>
+     <button class="copy" data-copy="${esc(fmt.py)}">Python/JS</button></div>
+   </div>
+   <div class="simbar">${[['none',t('일반','Typical')],['prot',t('적색맹','Protan')],['deut',t('녹색맹','Deutan')],['trit',t('청색맹','Tritan')],['gray',t('흑백','Grayscale')]].map(([k,l])=>`<button data-sim="${k}" class="${CH.sim===k?'on':''}">${l}</button>`).join('')}<span class="muted">${t('← 다른 눈으로 미리보기','← preview as others see it')}</span></div>
+   ${chartSVG(view)}
+   <div class="panel" style="margin-top:16px"><h3>${t('구별성 점검','Distinguishability check')} <span class="muted" style="font-weight:400;font-size:13px">${CH.type==='cat'?t('모든 색 쌍 중 가장 비슷한 쌍','closest pair among all colors'):t('이웃한 단계끼리','between adjacent steps')}</span></h3>
+    <table class="chk">${rows.map(([lbl,m,kind,mode])=>{const gk=grade(m.v,kind);return `<tr><td>${lbl}</td><td><span class="pp"><i style="background:#${simList([pal[m.i]],mode)[0]}"></i><i style="background:#${simList([pal[m.j]],mode)[0]}"></i></span> ${m.i+1} & ${m.j+1}</td><td>${kind==='gl'?'ΔL':'ΔE'} ${m.v.toFixed(1)}</td><td><span class="badge g-${gk}">${gradeTxt(gk)}</span></td></tr>`}).join('')}
+     ${CH.type!=='cat'?'':`<tr><td>${t('배경 대비','Contrast vs background')}</td><td>${t('가장 낮은 색','Lowest')}</td><td>${cmin.toFixed(2)}:1</td><td><span class="badge g-${grade(cmin,'c')}">${gradeTxt(grade(cmin,'c'))}</span></td></tr>`}</table>
+    <p class="muted" style="font-size:12.5px;margin:10px 0 0">${t('기준: 범주형은 색차 ΔE 20 이상 좋음·10 미만 주의, 순차·발산형은 이웃 단계 ΔE 10 이상 좋음 · 흑백 명도차 ΔL 10(순차·발산 7) 이상 좋음 · 그래프 요소의 배경 대비 3:1 이상 권장(WCAG 1.4.11). 범주형 색이 많을수록 구별이 어려워지니, 6개를 넘으면 라벨을 직접 붙이거나 강조형을 고려하세요. 발산형은 양쪽이 같은 밝기로 대칭이라 흑백에서는 좌우 구분이 안 되므로, 인쇄용이라면 0 기준선이나 라벨을 함께 쓰세요.','Thresholds: categorical ΔE ≥ 20 good, < 10 low; sequential/diverging adjacent steps ΔE ≥ 10 good · grayscale ΔL ≥ 10 (7 for ordered) good · graphics contrast ≥ 3:1 (WCAG 1.4.11). With more than ~6 categories, label series directly or use the highlight style. Diverging palettes are symmetric in lightness, so left and right sides look alike in grayscale — add a zero line or labels for print.')}</p>
+   </div>
+  </div>
+ </div>`;
+ const rer=()=>viewChart();
+ app.querySelectorAll('[data-type]').forEach(b=>b.onclick=()=>{CH.type=b.dataset.type;if(CH.type!=='cat'&&CH.n>9)CH.n=9;rer()});
+ app.querySelectorAll('[data-bg]').forEach(b=>b.onclick=()=>{CH.bg=b.dataset.bg;rer()});
+ app.querySelectorAll('[data-sim]').forEach(b=>b.onclick=()=>{CH.sim=b.dataset.sim;rer()});
+ const st=$('#cstyle');if(st)st.onchange=e=>{CH.style=e.target.value;rer()};
+ const cn=$('#cn');cn.oninput=e=>{$('#nval').textContent=e.target.value};cn.onchange=e=>{CH.n=+e.target.value;rer()};
+ const cb=$('#cbase');if(cb)cb.onchange=e=>{CH.base=normHex(e.target.value);rer()};
+ const ct=$('#cbaseT');if(ct)ct.onchange=e=>{const h=parseQuery(e.target.value);if(h){CH.base=h;rer()}else toast(t('올바른 HEX 코드를 입력하세요','Enter a valid HEX code'))};
+ const c2=$('#cbase2');if(c2)c2.onchange=e=>{CH.base2=normHex(e.target.value);rer()};
+ const a2=$('#cauto2');if(a2)a2.onclick=()=>{CH.base2=null;rer()};
+}
+
+/* ================= ROUTER ================= */
+function route(keepScroll){
+ const h=location.hash.replace(/^#/,'')||'home';let r=h;
+ const site=t('색채의 세계','Color Atlas');
+ window.onresize=null;
+ if(h.startsWith('c-')&&normHex(h.slice(2))){const hx=normHex(h.slice(2));viewColor(hx);r='color';const c=curatedFor(hx);document.title=(c?nm(c):'#'+hx.toUpperCase())+' · '+site}
+ else if(h==='atlas'){viewAtlas();document.title=t('색상 지도','Atlas')+' · '+site}
+ else if(h==='korean'){viewKorean();document.title=t('한국의 색','Korean Colors')+' · '+site}
+ else if(h==='pigments'){viewPigments();document.title=t('안료 이야기','Pigments')+' · '+site}
+ else if(h==='outfit'){viewOutfit();r='match';document.title=t('코디 매칭','Outfit Match')+' · '+site}
+ else if(h==='personal'){viewPersonal();r='match';document.title=t('퍼스널 컬러','Personal Color')+' · '+site}
+ else if(h==='chart'){viewChart();r='match';document.title=t('차트 팔레트','Chart Palette')+' · '+site}
+ else{viewHome();r='home';document.title=t('색채의 세계 · Color Atlas','Color Atlas · 색채의 세계')}
+ document.querySelectorAll('#menu a').forEach(a=>a.classList.toggle('on',a.dataset.r===r));
+ if(keepScroll!==true)window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',()=>route());
+renderChrome();route();
+
+</script>
+</body>
+</html>
